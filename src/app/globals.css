@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Scageon — Swiss Precision (Minimalism)
+   Light-first, single accent, strict grid, quiet motion.
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  /* Palette */
+  --color-bg: #f4f5f7; /* canvas / muted band */
+  --color-surface: #ffffff; /* white sections & cards */
+  --color-ink: #12151a; /* rare dark anchor */
+  --color-text: #14181d; /* primary text */
+  --color-muted: #6b7280; /* secondary text */
+  --color-accent: #1f5eff; /* the single accent */
+  --color-accent-strong: #1746c7; /* accent for text/links on white (AA) */
+  --color-border: #e5e7eb; /* hairline */
+  --color-border-strong: #d1d5db;
+
+  /* Dark statement sections (black anchor + gradient depth) */
+  --color-black: #0a0a0a;
+  --color-ink-deep: #1a1f2e;
+  --color-muted-dark: #9aa3af; /* AA body text on dark */
+  --color-border-dark: #2a303a;
+
+  /* Legacy aliases kept for safety (mapped into the light system) */
+  --color-ink-2: #1c2129;
+  --color-ink-3: #2a303a;
+  --color-accent-2: #7c5cff;
+
+  /* Type — Inter Tight (display) + Inter (body/UI) */
+  --font-display: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale (fluid, restrained) */
+  --text-display: clamp(2.5rem, 5.2vw, 4.5rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.025em;
+  --text-h2: clamp(1.6rem, 3vw, 2.25rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.015em;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.6;
+
+  /* Rhythm & motion */
+  --radius: 0.5rem;
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-shimmer: shimmer 1.6s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.accordion-content[data-state="open"] {
+  animation: accordion-down 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.accordion-content[data-state="closed"] {
+  animation: accordion-up 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: clip;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* Logo: the white wordmark rendered near-black for light surfaces */
+@utility logo-ink {
+  filter: brightness(0) saturate(100%);
+}
+
+/* Skeleton shimmer surface */
+@utility skeleton {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-muted) 12%, transparent) 25%,
+    color-mix(in srgb, var(--color-muted) 22%, transparent) 37%,
+    color-mix(in srgb, var(--color-muted) 12%, transparent) 63%
+  );
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+  border-radius: 8px;
+}
+
+/* Solutions grid: cards are equal height while all closed; once any case
+   study is open, stop stretching so only the opened card grows. */
+.solutions-grid {
+  align-items: stretch;
+}
+.solutions-grid:has([data-state="open"]) {
+  align-items: start;
+}
+
+/* Static dark statement section: gradient depth from black → ink → deep */
+@utility section-dark {
+  background: linear-gradient(
+    158deg,
+    var(--color-black) 0%,
+    var(--color-ink) 55%,
+    var(--color-ink-deep) 100%
+  );
+  color: #ffffff;
+}
+
+/* Controlled accent edge-glow (geometric, top-right bleed) — no blobs */
+@utility accent-edge {
+  background: radial-gradient(
+    55% 85% at 100% 0%,
+    color-mix(in srgb, var(--color-accent) 16%, transparent) 0%,
+    transparent 58%
+  );
+}
+
+/* Gradient sweep on hover — "light catching an edge" (opacity/position only) */
+.sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 60%
+  );
+  background-size: 250% 100%;
+  background-position: 175% 0;
+  transition: background-position 650ms var(--ease-out-soft);
+}
+.sweep:hover::after,
+.sweep:focus-visible::after {
+  background-position: -75% 0;
+}
+
+/* 1px border that animates transparent → accent on hover */
+.hover-edge {
+  border: 1px solid transparent;
+  transition: border-color 250ms var(--ease-out-soft),
+    background-color 250ms var(--ease-out-soft);
+}
+.hover-edge:hover {
+  border-color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep:hover::after,
+  .sweep:focus-visible::after {
+    background-position: 175% 0; /* no sweep motion */
+  }
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
