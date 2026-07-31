@@ -530,6 +530,73 @@ so a real post is just a data entry. Scope and naming still to be confirmed.
 
 ---
 
+## Step 8 — "Explore" concept menu + footer fix ✅
+
+### 8.1 Explore dropdown added to the navbar
+**File:** `src/components/layout/Navbar.tsx`
+
+A **concept menu** — its purpose is to show stakeholders what the site *could* host, without
+implying any of it exists yet. Sits between **Industries** and **About**.
+
+```
+EXPLORE ▾
+  PEOPLE & CULTURE
+    Life at Scageon            Culture, teams, and the everyday
+    Celebrations & Milestones  Festivals, wins, and work anniversaries
+    Team Spotlights            The people behind the projects
+  WRITING
+    Blog                       Perspective on data, AI, and delivery
+    Engineering Notes          Technical write-ups from our engineers
+    Newsletter                 A monthly round-up
+  ─────────────────────────────────────────
+    LinkedIn
+```
+
+**Display-only by design.** Items are rendered as plain `<div>` / `<span>` elements — not `<Link>`
+or `<a>` — so they are non-navigable *and* invisible to keyboard tabbing and screen-reader link
+lists by construction, not by an attribute that could be missed. Only the "Explore" trigger responds.
+Verified: zero anchors inside the block.
+
+**Why this shape:**
+- Six items fits the **existing 288px dropdown** exactly — the Industries menu already carries six.
+  No new layout variant, nothing that reads as bolted-on.
+- Group headings reuse the site's established `font-mono` uppercase label style (already used for
+  "Who we are", tech-stack groups, and case-study detail blocks).
+- LinkedIn occupies the existing bottom-bar slot, where "All Services →" sits on the other menus.
+- **No scrolling** — a scrollbar inside a *hover*-triggered menu is a usability trap (moving toward
+  the scrollbar can drop the hover and close the panel), and it signals "uncurated". Curation was
+  the better answer.
+
+Mobile panel mirrors the same content and the same non-interactive treatment.
+
+**Decisions taken:** no "Soon" badges (muted styling only); LinkedIn as the sole social, since
+showing channels that don't exist is worse than omitting them. Careers, Events, Press, Whitepapers,
+and Gallery were deliberately excluded — overlap or thin substance for a 2025-founded company.
+
+### 8.2 Footer stale line — ⚠️ found on all 19 pages
+**File:** `src/components/layout/Footer.tsx`
+
+Found during a nav/footer audit, which had not been reviewed in any earlier pass. The footer
+hard-coded the retired positioning line replaced everywhere else in Step 2.
+
+| | |
+|---|---|
+| Before | "{tagline}. **Data & AI solutions for mid-market enterprises.**" |
+| After | **"{tagline}. Data and AI for mid-market enterprises, built for regulated, mission-critical environments."** |
+
+*Impact:* the footer renders on every route, so this stale phrasing was visible site-wide — the
+single most-shown piece of outdated copy on the site.
+
+**Navbar audit result: clean.** All five service blurbs and all six industry blurbs are accurate and
+current. No stale content found.
+
+### Verification
+- `npx tsc --noEmit` → clean
+- `npm run build` → compiled successfully, all 19 routes prerendered static
+- Explore block contains **0** `<Link>` / `<a>` elements
+
+---
+
 ## Open decisions (carried forward)
 
 | # | Item | Status |
