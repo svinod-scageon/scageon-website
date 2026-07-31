@@ -60,9 +60,14 @@ export default async function IndustryDetailPage({
             <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-accent-strong">
               The landscape
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-text sm:text-xl">
-              {ind.landscape}
-            </p>
+            <ul className="mt-6 space-y-4">
+              {ind.landscape.map((point) => (
+                <li key={point} className="flex items-start gap-3.5">
+                  <BulletMark className="text-accent" />
+                  <p className="text-lg leading-relaxed text-text">{point}</p>
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </Container>
       </section>

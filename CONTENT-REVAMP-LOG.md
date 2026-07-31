@@ -252,7 +252,115 @@ were all reverted. Recorded here only so the decision isn't revisited later.
 
 ---
 
-## Step 4 — Industries (`/industries` + 6 detail pages) ⬜ Pending
+## Step 4 — Industries (`/industries` + 6 detail pages) ✅
+
+### 4.1 Hero headlines — ⚠️ the biggest problem on the site
+**File:** `src/content/industries.ts`
+
+Four of the six hero titles opened with the **same seven words**: *"We build production-grade …"*.
+Click through three industries in a demo and it reads like a template with the nouns swapped out.
+They were also paragraph-length — Healthcare's was **23 words in an `<h1>`**.
+
+Every headline is now short and distinct, with the specifics moved down into the sub-line
+(where they belong) rather than crammed into the title.
+
+| Industry | Before | After |
+|---|---|---|
+| Healthcare | "We build production-grade AI and SaaS for healthcare — from hospital command centers to intelligent workforce planning and remote patient monitoring." | **"Real-time intelligence for hospital operations."** |
+| Banking & Finance | "We build production-grade platforms for banking and finance — from zero-downtime core migrations to governed back-office control and self-serve customer messaging." | **"Modernize the core — without the downtime."** |
+| Retail | "We build real-time intelligence for retail — fusing point-of-sale, in-store vision, and product journeys into one operational view." | **"See what converts, while it's still happening."** |
+| Automotive | "We build AI creative platforms for automotive — generating, validating, and packaging campaign-ready visuals at scale." | **"One shoot. Every variation."** |
+| Media & Entertainment | "We build AI for media & entertainment — from automated audio-video QC to privacy-safe, multi-party data collaboration." | **"Ship faster, without risking quality or privacy."** |
+| OTT / Streaming | "We build subscriber and revenue intelligence for streaming — unifying subscription, payment, and viewing data into one source of truth." | **"One source of truth for every subscriber."** |
+
+All six sub-lines were rewritten to carry the detail the headlines gave up, so nothing was lost.
+
+### 4.2 The Landscape: prose → bullets
+**Files:** `src/content/types.ts`, `src/content/industries.ts`, `src/app/industries/[slug]/page.tsx`
+
+`Industry.landscape` changed from `string` to `string[]`. All six rewritten from a single ~55-word
+paragraph into **three bullets**, using the same spine as the Services overview:
+
+1. how the industry works → 2. what breaks today → 3. what Scageon does about it
+
+Rendered with the same `<BulletMark />` aperture used on the Services pages, so both sections
+now read as one system.
+
+**Example — Retail**
+
+> **Before** — "Retail runs on data that rarely connects — the POS knows what sold, the cameras see
+> what happened, but the two never meet. Scageon fuses transactions, live store vision, and product
+> journeys into one real-time operational view, so teams act on what's converting (or not) while
+> it's still happening."
+
+> **After**
+> - Retail runs on data that rarely connects.
+> - The POS knows what sold and the cameras see what happened — but the two never meet.
+> - We fuse transactions, live store vision, and product journeys into one real-time view, so teams act while it still matters.
+
+### 4.3 Solution cards: "delivers" prose → bullets
+**Files:** `src/content/types.ts`, `src/content/industries.ts`, `src/components/sections/SolutionCard.tsx`
+
+`Solution.delivers` changed from `string` to `string[]`. These were the densest text on the site —
+single sentences running 30–40 words with three or four em-dash clauses stacked inside them.
+
+**Example — Back-Office Control & Audit**
+
+> **Before** — "Federated single sign-on across two identity providers, three-layer security, an
+> append-only audit log of every privileged action, and end-to-end request tracing."
+
+> **After**
+> - Federated single sign-on across two identity providers
+> - Three-layer security model
+> - Append-only audit log of every privileged action
+> - End-to-end request tracing
+
+Applied to all 11 solutions across the six industries. Rendered with the card's existing small-dot
+bullet style (not the larger aperture mark) to keep the hierarchy right — card-level detail should
+sit visually below page-level bullets.
+
+`whatItIs` stays a single prose sentence on purpose: it is a definition, and definitions read
+better as sentences than as fragments.
+
+### 4.4 Listing page was a carbon copy of the Home section
+**File:** `src/app/industries/page.tsx`
+
+The `/industries` hero repeated the Home page's industries block **word for word** — same title,
+same sub. Anyone scrolling Home and then clicking "Industries" saw the identical sentence twice.
+
+| | Before | After |
+|---|---|---|
+| Title | "Built for the industries that can't afford to get it wrong." *(identical to Home)* | **"Six industries. Production systems in each."** |
+| Sub | "Compliance-critical, mission-critical, real-time. Explore how we work in each." *(identical to Home)* | **"From hospital command centers to core banking migrations — the work, the outcomes, and the case studies behind each."** |
+
+The Home page keeps the original line, which is strong where it sits.
+
+### 4.5 Industries SEO description — ⚠️ stale fact fixed
+**File:** `src/app/industries/page.tsx`
+
+| | |
+|---|---|
+| Before | "…Healthcare, Banking & Finance, **and more**." |
+| After | **"…Healthcare, Banking & Finance, Retail, Automotive, Media & Entertainment, and OTT."** |
+
+*Why:* all six are live. "And more" was written when only two were published — it under-sold four
+whole industries and wasted the SEO slot.
+
+### 4.6 Stale code comment corrected
+**File:** `src/content/industries.ts`
+
+The file header still read *"v1 publishes Healthcare + Banking & Finance… the other four are
+registered but not yet published"*. All six have `published: true`. Comment rewritten so the next
+developer isn't misled.
+
+### Left untouched deliberately
+`outcomes` (already tight one-line bullets), all solution titles and taglines, every
+`caseStudySlug`, `relatedServices`, and `published` flag.
+
+### Verification
+- `npx tsc --noEmit` → clean (confirms both `string` → `string[]` changes are fully wired)
+- `hospital-at-home` case study confirmed present in `caseStudies.ts`
+- Dev server compiling, routes returning 200
 ## Step 5 — Case studies ⬜ Pending — wording only; every metric preserved verbatim
 ## Step 6 — About + Contact ⬜ Pending
 ## Step 7 — Company Updates page ⬜ Parked until the content pass is complete

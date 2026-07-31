@@ -17,7 +17,7 @@ export type Solution = {
   title: string;
   tagline: string;
   whatItIs: string;
-  delivers: string;
+  delivers: string[]; // scannable bullets, not prose
   caseStudySlug?: string; // "View case study →"
   comingSoon?: boolean;
 };
@@ -33,7 +33,7 @@ export type Industry = {
   eyebrow: string;
   headline: string;
   sub: string;
-  landscape: string;
+  landscape: string[]; // scannable bullets, not prose
   solutions: Solution[];
   outcomes: Outcome[];
   relatedServices: string[];
