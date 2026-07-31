@@ -9,7 +9,7 @@ import { site } from "@/content/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Tell us what you're trying to build or solve. Scageon — Data & AI solutions for mid-market enterprises.",
+    "Talk to Scageon about a data or AI project — Bengaluru-based, building for regulated, mission-critical environments.",
 };
 
 export default function ContactPage() {
@@ -17,8 +17,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Let's build what's next."
-        sub="Tell us the outcome you're chasing — we'll show you the fastest credible path with AI and data."
+        title="Tell us what you're building."
+        sub="Bring us a scoped project or an early idea. We'll come back with a clear view of what it takes to get there."
         crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
 

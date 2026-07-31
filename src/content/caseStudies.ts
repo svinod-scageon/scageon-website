@@ -10,7 +10,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["software-engineering", "data-analytics"],
     client: "A leading hospital chain (Middle East)",
     overview:
-      "Mission-critical decision-support platform for hospital-chain optimization — consolidating operations into a single, real-time operational view.",
+      "A mission-critical decision-support platform that consolidates hospital-chain operations into a single, real-time view.",
     solution: [
       "Unified healthcare data platform across hospital operations",
       "AI-driven self-serve tools for capacity and resource planning",
@@ -32,11 +32,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["ai-automation", "software-engineering"],
     client: "One of Asia's largest private hospital networks",
     overview:
-      "AI-driven intelligent workforce-automation platform — end-to-end digitisation of nurse rostering, shift management, and leave workflows across multiple hospitals, replacing manual operations with a real-time system.",
+      "An AI-driven workforce-automation platform that digitizes nurse rostering, shift management, and leave workflows across multiple hospitals — replacing manual operations with a real-time system.",
     solution: [
       "AI engine auto-generates conflict-free, compliance-ready rosters in minutes, not days",
       "Real-time workforce intelligence: staffing gaps, skill shortfalls, and overtime risks surfaced instantly",
-      "Self-service for nurses plus a command centre for leaders",
+      "Self-service for nurses, plus a command center for leaders",
       "Multi-level AI-assisted approvals and automated rule enforcement across wards and hospitals",
     ],
     impact: [
@@ -64,7 +64,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["software-engineering"],
     client: "A bank modernizing its core systems",
     overview:
-      "Legacy-to-modern platform migration — old and new core systems running side by side without disruption, ensuring continuous operations throughout the transition, with security strengthened by automated checks before every release.",
+      "A legacy-to-modern platform migration — old and new core systems running side by side, with continuous operations throughout the transition and automated security checks before every release.",
     solution: [
       "Removed manual tracking of which customers had migrated",
       "Upgraded rigid legacy connections to a faster, more flexible modern format",
@@ -104,7 +104,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["software-engineering"],
     client: "A leading regional bank",
     overview:
-      "A centralized back-office API management and audit platform — unifying access, control, and audit across sensitive banking APIs and configuration.",
+      "A centralized back-office platform that unifies access, control, and audit across sensitive banking APIs and configuration.",
     problem: [
       "Sensitive backend APIs configurable only by engineers — no controlled self-serve interface",
       "No unified, traceable access control across privileged banking operations",
@@ -220,7 +220,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["ai-automation"],
     client: "A global automotive company",
     overview:
-      "An AI-driven marketing creative generation platform — AI product photography and instant, campaign-ready visuals produced and validated at scale.",
+      "A marketing creative platform — AI product photography and campaign-ready visuals, produced and validated at scale.",
     solution: [
       "AI-driven product photography",
       "Instant, campaign-ready visuals",
@@ -339,9 +339,9 @@ export const caseStudies: Record<string, CaseStudy> = {
     tagline: "Acute care, safely delivered at home.",
     industrySlug: "healthcare",
     serviceSlugs: ["software-engineering", "ai-automation", "data-analytics"],
-    client: "A health system running a hospital-at-home programme across Saudi Arabia",
+    client: "A health system running a hospital-at-home program across Saudi Arabia",
     overview:
-      "A clinical operations platform for delivering acute-level hospital care inside patients' homes — safely, compliantly, and at scale. It manages the complete episode from referral, admission, or transfer through medical eligibility review, in-home suitability assessment, active remote care, and discharge — every decision documented in one system of record, built for the Saudi (MOH / CBAHI) regulatory environment.",
+      "A clinical operations platform for delivering acute-level hospital care inside patients' homes — safely, compliantly, and at scale. It governs the full episode from referral, admission, or transfer through eligibility review, in-home assessment, active remote care, and discharge, with every decision documented in one system of record and built for the Saudi (MOH / CBAHI) regulatory environment.",
     problem: [
       "Clinically stable patients occupy inpatient beds with no governed way to move them home — constraining capacity and delaying higher-acuity admissions.",
       "Home-care coordination runs on phone calls and informal handoffs — no single source of truth, and decisions go undocumented.",

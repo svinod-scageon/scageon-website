@@ -3,17 +3,24 @@ import PageHero from "@/components/sections/PageHero";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/motion/Reveal";
 import CtaBand from "@/components/sections/CtaBand";
+import BulletMark from "@/components/ui/BulletMark";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${site.legalName} — ${site.tagline}. Data & AI solutions for mid-market enterprises.`,
+  description: `${site.legalName} — a data and AI partner for mid-market enterprises, building for regulated, mission-critical environments.`,
 };
+
+const whoWeAre = [
+  "We design, build, and operate the platforms that turn scattered data into real-time decisions and production-grade AI.",
+  "We take on the systems businesses depend on — hospital command centers, core banking migrations, subscriber intelligence.",
+  "Security and compliance are first-class requirements here, not an afterthought.",
+];
 
 const values = [
   {
     title: "Compliance-first",
-    body: "We build for regulated, mission-critical environments. Security, access control, and auditability are designed in from day one — not bolted on.",
+    body: "We build for regulated, mission-critical environments. Security, access control, and auditability are designed in from day one — never bolted on.",
   },
   {
     title: "Production, not demos",
@@ -30,8 +37,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title={site.tagline + "."}
-        sub={site.description}
+        title="We take on the systems businesses depend on."
+        sub="A data and AI partner for mid-market enterprises — designing, building, and operating the platforms that regulated industries run on."
         crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 
@@ -42,16 +49,17 @@ export default function AboutPage() {
               Who we are
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-text">
-              Scageon is a data & AI partner for mid-market enterprises. We design,
-              build, and operate the platforms that turn scattered data into
-              real-time decisions and production-grade AI — across healthcare,
-              banking, and beyond.
+              Scageon is a data and AI partner for mid-market enterprises, working
+              across healthcare, banking, and beyond.
             </p>
-            <p className="mt-4 leading-relaxed text-muted">
-              From hospital command centers to zero-downtime core-banking
-              migrations, we take on the systems businesses depend on, and we treat
-              security and compliance as first-class requirements.
-            </p>
+            <ul className="mt-6 space-y-4">
+              {whoWeAre.map((point) => (
+                <li key={point} className="flex items-start gap-3.5">
+                  <BulletMark className="text-accent" />
+                  <p className="leading-relaxed text-muted">{point}</p>
+                </li>
+              ))}
+            </ul>
           </Reveal>
 
           <Reveal delay={0.08}>

@@ -93,7 +93,7 @@ export default function ContactForm() {
         autoComplete="organization"
       />
       <div>
-        <Label htmlFor="message">What are you trying to build or solve?</Label>
+        <Label htmlFor="message">What&apos;s the project?</Label>
         <textarea
           id="message"
           name="message"

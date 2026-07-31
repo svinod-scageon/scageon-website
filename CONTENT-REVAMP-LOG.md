@@ -361,6 +361,158 @@ developer isn't misled.
 - `npx tsc --noEmit` → clean (confirms both `string` → `string[]` changes are fully wired)
 - `hospital-at-home` case study confirmed present in `caseStudies.ts`
 - Dev server compiling, routes returning 200
-## Step 5 — Case studies ⬜ Pending — wording only; every metric preserved verbatim
-## Step 6 — About + Contact ⬜ Pending
-## Step 7 — Company Updates page ⬜ Parked until the content pass is complete
+## Step 5 — Case studies ✅
+
+**File:** `src/content/caseStudies.ts` (11 case studies)
+
+The tightest-scoped pass of the revamp. Case studies are the evidence behind every claim on the
+site, so **only `overview` prose and one bullet were touched**. Every `impact`, `problem`,
+`solution`, `features`, and `tech` array was left byte-for-byte identical.
+
+Total change: **8 lines out of 377** (`git diff --numstat` → `8  8`).
+
+### 5.1 Overview lines de-duplicated and tightened
+
+| Case study | Issue | After |
+|---|---|---|
+| Hospital Command Center | "consolidating **operations** into a single, real-time **operational** view" — same word twice | **"…consolidates hospital-chain operations into a single, real-time view."** |
+| Nurse Roster Planning | "**AI-driven intelligent**" — two words doing one job | **"An AI-driven workforce-automation platform that digitizes…"** |
+| Core Banking Modernization | "**without disruption**, ensuring **continuous operations**" — the same promise twice | **"…running side by side, with continuous operations throughout the transition…"** |
+| Back-Office Control & Audit | "API management and **audit** platform — unifying access, control, and **audit**" | **"A centralized back-office platform that unifies access, control, and audit…"** |
+| AI Creative Generation | "An **AI**-driven marketing creative generation platform — **AI** product photography" | **"A marketing creative platform — AI product photography and campaign-ready visuals…"** |
+| Hospital-at-Home | A single **60-word** sentence — the longest on the site | Split into two, "complete episode" → "full episode", redundant qualifiers dropped |
+
+### 5.2 Spelling normalized to US English
+The file mixed British and American spellings — sometimes within one entry.
+
+| Before | After | Where |
+|---|---|---|
+| "command **centre** for leaders" | "command **center**" | Nurse Roster Planning — and the case study directly above it is titled "Hospital Command **Center**" |
+| "end-to-end **digitisation**" | "**digitization**" | Nurse Roster Planning |
+| "hospital-at-home **programme**" | "**program**" | Hospital-at-Home client label |
+
+`grep` confirms zero British spellings remain across `src/content/`.
+
+### Untouched by design
+- **Every metric**, verified individually by grep: `20% staff productivity gain`,
+  `~30–40% reduced response times`, `~25–30% faster delivery`, `70% QC time reduction`,
+  `85% compliance accuracy`, `620K+ subscribers`, `78.3% Day-1`, `10M+ records`,
+  `50+ data partners`, `5 ad platforms`, `250+ automated tests` — all 11 present and unchanged.
+- All client labels (beyond the one spelling fix), all `tech` stacks, all `problem` / `solution` /
+  `features` bullets, every slug and cross-link.
+
+> **Noted for your call, not changed:** Real-Time Store Intelligence lists its impact as
+> "Improved sales", "Increased compliance", "Reduced stock-outs", "Reduced incidents" — four
+> unquantified one-liners, weak next to the hard numbers in every other case study. Adding figures
+> would mean inventing them, so it was left alone. If real numbers exist, this is the place to use them.
+
+### Verification
+- `npx tsc --noEmit` → clean
+- `git diff --numstat` → `8 8` (only the intended lines changed)
+- All 11 metrics grep-verified present
+- All 11 case studies still resolving
+## Step 6 — About + Contact ✅
+
+### 6.1 About hero no longer reuses the tagline
+**File:** `src/app/about/page.tsx`
+
+The About `<h1>` rendered `site.tagline` verbatim — the same line already in the browser title,
+the meta description, the Home hero eyebrow, and the footer. The sub-line was `site.description`,
+which is *also* the Home hero sub. The whole hero was recycled text.
+
+| | Before | After |
+|---|---|---|
+| Title | `{site.tagline + "."}` → "Enabling an AI-Powered Future." | **"We take on the systems businesses depend on."** |
+| Sub | `{site.description}` *(identical to Home)* | **"A data and AI partner for mid-market enterprises — designing, building, and operating the platforms that regulated industries run on."** |
+
+*Why this headline:* it was already sitting in the page's own second paragraph, doing nothing.
+It is concrete, it is a claim competitors can't copy safely, and it earns the case studies below it.
+
+### 6.2 "Who we are": prose → lead + bullets
+**File:** `src/app/about/page.tsx`
+
+Two stacked paragraphs became a one-line lead plus three bullets, using the same `<BulletMark />`
+as Services and Industries.
+
+> **Before** — two paragraphs, 78 words total:
+> "Scageon is a data & AI partner for mid-market enterprises. We design, build, and operate the
+> platforms that turn scattered data into real-time decisions and production-grade AI — across
+> healthcare, banking, and beyond." / "From hospital command centers to zero-downtime core-banking
+> migrations, we take on the systems businesses depend on, and we treat security and compliance as
+> first-class requirements."
+
+> **After** — lead: *"Scageon is a data and AI partner for mid-market enterprises, working across
+> healthcare, banking, and beyond."*
+> - We design, build, and operate the platforms that turn scattered data into real-time decisions and production-grade AI.
+> - We take on the systems businesses depend on — hospital command centers, core banking migrations, subscriber intelligence.
+> - Security and compliance are first-class requirements here, not an afterthought.
+
+Note the third bullet now names **three** proof areas instead of two, pulling OTT into view.
+
+### 6.3 Contact hero was a word-for-word repeat of the CTA band
+**File:** `src/app/contact/page.tsx`
+
+The Contact `<h1>` was **"Let's build what's next."** — byte-identical to `CtaBand`'s default
+title, which renders at the bottom of Home, About, Services, and Industries. Its sub duplicated the
+CTA body too. A visitor clicking "Contact" from any page read the same two sentences twice in one scroll.
+
+| | Before | After |
+|---|---|---|
+| Title | "Let's build what's next." *(identical to CtaBand)* | **"Tell us what you're building."** |
+| Sub | "Tell us the outcome you're chasing — we'll show you the fastest credible path with AI and data." *(near-identical to CtaBand body)* | **"Bring us a scoped project or an early idea. We'll come back with a clear view of what it takes to get there."** |
+
+`grep` confirms "Let's build what's next." now appears exactly **once** in the codebase — as the
+CtaBand default, where it belongs.
+
+### 6.4 Contact form label de-duplicated
+**File:** `src/components/sections/ContactForm.tsx`
+
+With the new hero reading "Tell us what you're **building**", the form's own label —
+"What are you trying to **build** or solve?" — echoed it a few hundred pixels below.
+
+| | |
+|---|---|
+| Before | "What are you trying to build or solve?" |
+| After | **"What's the project?"** |
+
+### 6.5 SEO descriptions refreshed
+Both pages still carried the retired "Data & AI solutions for mid-market enterprises" phrasing.
+
+| Page | After |
+|---|---|
+| About | "…a data and AI partner for mid-market enterprises, building for regulated, mission-critical environments." |
+| Contact | "Talk to Scageon about a data or AI project — Bengaluru-based, building for regulated, mission-critical environments." |
+
+### Left untouched deliberately
+The three "How we work" value cards were already tight (one clean claim + one supporting line
+each); only "not bolted on" → "never bolted on" was sharpened. The contact details block, the form
+fields, validation messages, and the mailto success state are all clear and were left as they are.
+
+> **Deferred by your decision:** `site.proof` — `["50+ projects delivered", "HIPAA & SOX compliant",
+> "Enterprise security & governance"]` — remains defined in `site.ts` and rendered nowhere. The
+> About page's "At a glance" card (currently just legal name + address) is the natural home for it,
+> and *HIPAA & SOX compliant* is the obvious replacement for Home's soft "100% Compliance-first
+> delivery" tile. Both left as-is at your request.
+### Verification (full content pass now complete)
+- `npx tsc --noEmit` → clean
+- `npm run build` → **exit 0, all 19 routes prerendered static**
+  (`/`, `/about`, `/contact`, `/services` + 5 detail, `/industries` + 6 detail, `/_not-found`)
+- `grep` → no duplicated hero/CTA copy anywhere in `src/`
+
+---
+
+## Step 7 — Company Updates page ⬜ NEXT — the one net-new page from the original brief
+
+For company news, celebrations, photos, and colleague-written posts. Empty at launch, structured
+so a real post is just a data entry. Scope and naming still to be confirmed.
+
+---
+
+## Open decisions (carried forward)
+
+| # | Item | Status |
+|---|---|---|
+| 1 | Home stat tile "**100%** Compliance-first delivery" — soft percentage on a qualitative claim; *HIPAA & SOX compliant* already written and unused | Deferred by request |
+| 2 | `site.proof` defined in `site.ts`, rendered nowhere | Deferred by request |
+| 3 | `⊙` text glyph still used in `Eyebrow.tsx` + Home hero tagline, now lighter than the SVG `BulletMark` beside it | Undecided |
+| 4 | Real-Time Store Intelligence impact — four unquantified one-liners vs hard numbers everywhere else | Needs real figures from you |
