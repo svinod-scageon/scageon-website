@@ -14,8 +14,8 @@ export default function ServicesPreview() {
       <Container className="py-20 sm:py-28">
         <SectionHeading
           eyebrow="What we do"
-          title="Five ways we move the needle."
-          intro="From the data layer to production AI, the software, and the cloud it runs on — each capability stands alone or works together."
+          title="Five disciplines. One engineering standard."
+          intro="From the data layer to production AI — and the software and cloud it all runs on. Each stands alone, or works as one."
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

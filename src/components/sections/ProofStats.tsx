@@ -5,7 +5,7 @@ import CountUp from "@/components/reactbits/CountUp";
 const stats = [
   { to: 50, suffix: "+", label: "Projects delivered" },
   { to: 6, suffix: "", label: "Industries served" },
-  { to: 3, suffix: "", label: "Core service lines" },
+  { to: 5, suffix: "", label: "Service lines" },
   { to: 100, suffix: "%", label: "Compliance-first delivery" },
 ];
 

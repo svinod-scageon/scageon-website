@@ -11,7 +11,7 @@ import { publishedServices } from "@/content/services";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Data & Analytics, AI Automation, and Product Engineering — the three ways Scageon moves mid-market enterprises forward.",
+    "Data Engineering, Data Analytics, Software Engineering, AI Automation, and Cloud — the five disciplines Scageon builds on for mid-market enterprises.",
 };
 
 export default function ServicesPage() {
@@ -22,7 +22,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="What we do — and how it compounds."
-        sub="Five capabilities that stand alone or work together — from the data layer to production AI, the software, and the cloud it runs on."
+        sub="From the data layer to production AI, and the software and cloud that carry it — each engineered to the same standard."
         crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />
 
@@ -43,7 +43,7 @@ export default function ServicesPage() {
                       {s.name}
                     </h2>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
-                      {s.overview}
+                      {s.sub}
                     </p>
                     <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent-strong">
                       Explore {s.name}

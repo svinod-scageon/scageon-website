@@ -6,6 +6,7 @@ import PageHero from "@/components/sections/PageHero";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/motion/Reveal";
 import SolutionCard from "@/components/sections/SolutionCard";
+import BulletMark from "@/components/ui/BulletMark";
 import CtaBand from "@/components/sections/CtaBand";
 import { industries, getIndustry } from "@/content/industries";
 import { getCaseStudy } from "@/content/caseStudies";
@@ -114,9 +115,7 @@ export default async function IndustryDetailPage({
                     className="group flex items-center justify-between gap-3 rounded-2xl border border-border bg-bg px-5 py-4 transition-colors hover:border-accent/50"
                   >
                     <span className="flex items-center gap-3 text-text">
-                      <span aria-hidden className="text-accent">
-                        ⊙
-                      </span>
+                      <BulletMark className="mt-0 text-accent" />
                       {o.text}
                     </span>
                     <ArrowUpRight className="h-4 w-4 shrink-0 text-accent-strong opacity-0 transition-opacity group-hover:opacity-100" />

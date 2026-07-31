@@ -6,6 +6,7 @@ import PageHero from "@/components/sections/PageHero";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/motion/Reveal";
 import Chips from "@/components/ui/Chips";
+import BulletMark from "@/components/ui/BulletMark";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
 import CtaBand from "@/components/sections/CtaBand";
 import { services, getService } from "@/content/services";
@@ -63,9 +64,14 @@ export default async function ServiceDetailPage({
             <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
               Overview
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted">
-              {service.overview}
-            </p>
+            <ul className="mt-6 space-y-4">
+              {service.overview.map((point) => (
+                <li key={point} className="flex items-start gap-3.5">
+                  <BulletMark className="text-accent" />
+                  <p className="leading-relaxed text-muted">{point}</p>
+                </li>
+              ))}
+            </ul>
           </Reveal>
 
           <Reveal delay={0.08}>

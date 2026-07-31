@@ -49,7 +49,7 @@ export type Service = {
   name: string;
   headline: string;
   sub: string;
-  overview: string;
+  overview: string[]; // scannable bullets, not prose
   deliver: Deliverable[]; // feature → benefit (FAB)
   howWeWork: string; // lead line for the approach section
   approach: Step[]; // the process, step by step
