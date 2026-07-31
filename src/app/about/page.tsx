@@ -72,7 +72,7 @@ export default function AboutPage() {
       <section className="bg-bg">
         <Container className="py-16 sm:py-20">
           <Reveal>
-            <h2 className="font-[family-name:var(--font-inter-tight)] text-3xl font-semibold text-text">
+            <h2 className="font-[family-name:var(--font-newsreader)] text-3xl font-semibold text-text">
               How we work
             </h2>
           </Reveal>

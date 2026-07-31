@@ -25,7 +25,7 @@ export default function ContactPage() {
       <section className="bg-surface">
         <Container className="grid gap-12 py-16 sm:py-20 lg:grid-cols-[1fr_1.1fr]">
           <Reveal>
-            <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+            <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
               Get in touch
             </h2>
             <p className="mt-3 text-muted">

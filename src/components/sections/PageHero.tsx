@@ -54,7 +54,7 @@ export default function PageHero({
           </nav>
         )}
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="mt-5 max-w-4xl font-[family-name:var(--font-inter-tight)] text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-[1.06] tracking-tight text-text">
+        <h1 className="mt-5 max-w-4xl font-[family-name:var(--font-newsreader)] text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-[1.06] tracking-tight text-text">
           {title}
         </h1>
         {sub && <p className="mt-5 max-w-2xl text-lead text-muted">{sub}</p>}

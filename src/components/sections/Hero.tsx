@@ -36,7 +36,7 @@ export default function Hero() {
 
           <motion.h1
             {...rise(0.06)}
-            className="mt-6 font-[family-name:var(--font-inter-tight)] text-display font-semibold text-text"
+            className="mt-6 font-[family-name:var(--font-newsreader)] text-display font-semibold text-text"
           >
             We build the data and AI systems that move your business forward.
           </motion.h1>

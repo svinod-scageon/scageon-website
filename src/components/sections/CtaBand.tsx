@@ -55,7 +55,7 @@ export default function CtaBand({
 
       <Container className="relative py-20 sm:py-24">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="font-[family-name:var(--font-inter-tight)] text-h2 font-semibold text-white">
+          <h2 className="font-[family-name:var(--font-newsreader)] text-h2 font-semibold text-white">
             {title}
           </h2>
           <p className="mt-4 text-muted-dark">{body}</p>

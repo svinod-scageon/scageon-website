@@ -70,7 +70,7 @@ export default async function IndustryDetailPage({
       <section className="bg-bg">
         <Container className="py-16 sm:py-20">
           <Reveal>
-            <h2 className="font-[family-name:var(--font-inter-tight)] text-3xl font-semibold text-text">
+            <h2 className="font-[family-name:var(--font-newsreader)] text-3xl font-semibold text-text">
               What we do here
             </h2>
             <p className="mt-3 max-w-2xl text-muted">
@@ -98,7 +98,7 @@ export default async function IndustryDetailPage({
         <section className="bg-surface">
           <Container className="py-16 sm:py-20">
             <Reveal>
-              <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+              <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
                 Outcomes
               </h2>
               <p className="mt-3 text-muted">
@@ -133,7 +133,7 @@ export default async function IndustryDetailPage({
         <section className="bg-bg">
           <Container className="py-16 sm:py-20">
             <Reveal>
-              <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+              <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
                 Services powering this
               </h2>
             </Reveal>

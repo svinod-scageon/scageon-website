@@ -27,7 +27,7 @@ export default function SectionHeading({
       {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
       <h2
         className={cn(
-          "mt-4 font-[family-name:var(--font-inter-tight)] text-3xl font-semibold tracking-tight sm:text-4xl",
+          "mt-4 font-[family-name:var(--font-newsreader)] text-3xl font-semibold tracking-tight sm:text-4xl",
           tone === "dark" ? "text-white" : "text-text"
         )}
       >
