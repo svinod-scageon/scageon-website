@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import SectionParticles from "@/components/sections/SectionParticles";
+import BulletMark from "@/components/ui/BulletMark";
 import { site } from "@/content/site";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -30,7 +31,7 @@ export default function Hero() {
             {...rise(0)}
             className="flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-[0.22em] text-accent-strong"
           >
-            <span aria-hidden className="text-accent">⊙</span>
+            <BulletMark className="mt-0 h-[0.85em] w-[0.85em] text-accent" />
             {site.tagline}
           </motion.p>
 

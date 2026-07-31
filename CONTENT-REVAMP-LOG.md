@@ -493,6 +493,28 @@ fields, validation messages, and the mailto success state are all clear and were
 > About page's "At a glance" card (currently just legal name + address) is the natural home for it,
 > and *HIPAA & SOX compliant* is the obvious replacement for Home's soft "100% Compliance-first
 > delivery" tile. Both left as-is at your request.
+### 6.6 Aperture mark unified site-wide — the `⊙` glyph is gone
+**Files:** `src/components/ui/Eyebrow.tsx`, `src/components/sections/Hero.tsx`
+
+The raw `⊙` text character was still prefixing every eyebrow label — the small uppercase line above
+each page and section heading ("ABOUT", "HEALTHCARE", "WHAT WE DO", "SERVICES", and so on) — plus the
+Home hero tagline. Because it rendered from the font, it looked thin and sat slightly off-baseline,
+which was increasingly obvious next to the crisp SVG bullets introduced in 3.7.
+
+Both now use the same `<BulletMark />` component, sized `0.85em` to match the eyebrow's optical
+weight and set to `mt-0` (the eyebrow is `inline-flex items-center`, so it centres itself).
+
+| | Before | After |
+|---|---|---|
+| Eyebrow prefix | `<span>⊙</span>` at `0.9em` | **`<BulletMark />`** at `0.85em` |
+| Home hero tagline | `<span>⊙</span>` | **`<BulletMark />`** |
+
+**Reach:** `Eyebrow` is consumed by `PageHero` and `SectionHeading`, so this single change
+propagates to **every page and every major section** on the site. One mark, one rendering, everywhere.
+
+`grep` confirms zero `⊙` characters remain in any rendered output — the only occurrence left in the
+repo is inside a `BulletMark.tsx` code comment documenting what it replaced.
+
 ### Verification (full content pass now complete)
 - `npx tsc --noEmit` → clean
 - `npm run build` → **exit 0, all 19 routes prerendered static**
@@ -514,5 +536,5 @@ so a real post is just a data entry. Scope and naming still to be confirmed.
 |---|---|---|
 | 1 | Home stat tile "**100%** Compliance-first delivery" — soft percentage on a qualitative claim; *HIPAA & SOX compliant* already written and unused | Deferred by request |
 | 2 | `site.proof` defined in `site.ts`, rendered nowhere | Deferred by request |
-| 3 | `⊙` text glyph still used in `Eyebrow.tsx` + Home hero tagline, now lighter than the SVG `BulletMark` beside it | Undecided |
+| 3 | `⊙` text glyph in `Eyebrow.tsx` + Home hero tagline | ✅ **Resolved — see 6.6** |
 | 4 | Real-Time Store Intelligence impact — four unquantified one-liners vs hard numbers everywhere else | Needs real figures from you |
