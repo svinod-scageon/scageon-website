@@ -597,6 +597,50 @@ current. No stale content found.
 
 ---
 
+## Step 9 — Accent color: blue → Petrol Teal ✅
+
+Presented as five candidates in a side-by-side visual comparison (light-surface and dark-ink-band
+mockups for each) before any code changed. **Petrol Teal** was selected.
+
+### 9.1 Core token swap
+**File:** `src/app/globals.css`
+
+| Token | Before | After |
+|---|---|---|
+| `--color-accent` | `#1F5EFF` | **`#0B6E76`** |
+| `--color-accent-strong` (hover/text-on-white) | `#1746C7` | **`#085A61`** |
+
+Because every button, link, focus ring, and accent-colored element in the codebase reads its color
+through these two CSS variables, this single edit re-colors the entire site — buttons, `CtaBand`,
+stat-number suffixes, hover states, focus outlines, the `accent-edge` glow, and more.
+
+*Left alone:* `--color-accent-2` (`#7c5cff`, a legacy violet alias) — confirmed via grep to be
+**unused anywhere in the codebase**. Dead code, out of scope for this change.
+
+### 9.2 Hardcoded blue values — the parts the CSS variable couldn't reach
+Some blue values were passed as literal props/arrays rather than referencing the CSS variable, so
+the token swap alone would have left them blue. All were converted to the teal equivalent
+(`#1F5EFF` → `rgb(11, 110, 118)`):
+
+**Spotlight hover-glow color** (`SpotlightCard`'s `spotlightColor` prop) — 7 call sites:
+`src/app/industries/page.tsx`, `src/app/services/page.tsx`, `src/app/services/[slug]/page.tsx`,
+`src/components/sections/IndustriesPreview.tsx`, `src/components/sections/ServicesPreview.tsx`,
+`src/components/sections/SolutionCard.tsx`.
+
+**Ambient particle-field colors** — 3 call sites:
+`src/components/sections/SectionParticles.tsx` (default `colors` prop),
+`src/components/sections/Hero.tsx`, `src/components/sections/PageHero.tsx`.
+Each three-stop array (accent / mid-tone / neutral) was re-derived in the teal family rather than
+just swapping the first value, so the ambient particle field reads as one coherent palette instead
+of a teal dot mixed with leftover blue-tinted stops.
+
+### Verification
+- `grep -rniE` for every known blue hex/rgba pattern across `src/` → **zero matches**
+- `npx tsc --noEmit` → clean
+- `npm run build` → all 19 routes prerendered static
+
+---
+
 ## Open decisions (carried forward)
 
 | # | Item | Status |

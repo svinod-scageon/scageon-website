@@ -185,7 +185,7 @@ export default async function ServiceDetailPage({
                     className="group block h-full"
                   >
                     <SpotlightCard
-                      spotlightColor="rgba(31, 94, 255, 0.16)"
+                      spotlightColor="rgba(11, 110, 118, 0.16)"
                       className="flex h-full flex-col p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.015] group-hover:border-accent/50 group-hover:shadow-xl"
                     >
                       <span className="font-mono text-xs uppercase tracking-[0.16em] text-muted">

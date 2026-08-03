@@ -23,7 +23,7 @@ export default function Hero() {
       <SectionParticles
         count={70}
         opacity={55}
-        colors={["#1F5EFF", "#6b86ff", "#9aa3af"]}
+        colors={["#0B6E76", "#5fa3a8", "#9aa3af"]}
       />
       <Container className="relative pb-20 pt-6 sm:pb-28 sm:pt-8 lg:pb-32 lg:pt-10">
         <div className="max-w-4xl">

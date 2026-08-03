@@ -52,7 +52,7 @@ export default function SolutionCard({
   return (
     <div id={anchorId} className="h-full scroll-mt-24">
       <SpotlightCard
-        spotlightColor="rgba(31, 94, 255, 0.14)"
+        spotlightColor="rgba(11, 110, 118, 0.14)"
         className={cn(
           "flex h-full flex-col p-7 transition-all duration-300 sm:p-8",
           solution.comingSoon
