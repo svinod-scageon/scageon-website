@@ -17,7 +17,7 @@ export type Solution = {
   title: string;
   tagline: string;
   whatItIs: string;
-  delivers: string;
+  delivers: string[]; // scannable bullets, not prose
   caseStudySlug?: string; // "View case study →"
   comingSoon?: boolean;
 };
@@ -33,7 +33,7 @@ export type Industry = {
   eyebrow: string;
   headline: string;
   sub: string;
-  landscape: string;
+  landscape: string[]; // scannable bullets, not prose
   solutions: Solution[];
   outcomes: Outcome[];
   relatedServices: string[];
@@ -49,7 +49,7 @@ export type Service = {
   name: string;
   headline: string;
   sub: string;
-  overview: string;
+  overview: string[]; // scannable bullets, not prose
   deliver: Deliverable[]; // feature → benefit (FAB)
   howWeWork: string; // lead line for the approach section
   approach: Step[]; // the process, step by step

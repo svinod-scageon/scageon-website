@@ -6,6 +6,7 @@ import PageHero from "@/components/sections/PageHero";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/motion/Reveal";
 import Chips from "@/components/ui/Chips";
+import BulletMark from "@/components/ui/BulletMark";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
 import CtaBand from "@/components/sections/CtaBand";
 import { services, getService } from "@/content/services";
@@ -60,16 +61,21 @@ export default async function ServiceDetailPage({
       <section className="bg-surface">
         <Container className="grid gap-12 py-16 sm:py-20 lg:grid-cols-[1fr_1.15fr]">
           <Reveal>
-            <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+            <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
               Overview
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted">
-              {service.overview}
-            </p>
+            <ul className="mt-6 space-y-4">
+              {service.overview.map((point) => (
+                <li key={point} className="flex items-start gap-3.5">
+                  <BulletMark className="text-accent" />
+                  <p className="leading-relaxed text-muted">{point}</p>
+                </li>
+              ))}
+            </ul>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+            <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
               What we deliver
             </h2>
             <ul className="mt-6 space-y-5">
@@ -95,7 +101,7 @@ export default async function ServiceDetailPage({
       <section className="bg-bg">
         <Container className="py-16 sm:py-20">
           <Reveal className="max-w-2xl">
-            <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+            <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
               How we work
             </h2>
             <p className="mt-3 text-lg leading-relaxed text-muted">
@@ -126,7 +132,7 @@ export default async function ServiceDetailPage({
       <section className="bg-surface">
         <Container className="py-16 sm:py-20">
           <Reveal className="max-w-2xl">
-            <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+            <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
               Tech we use
             </h2>
             <p className="mt-3 text-muted">
@@ -164,7 +170,7 @@ export default async function ServiceDetailPage({
         <section className="bg-bg">
           <Container className="py-16 sm:py-20">
             <Reveal>
-              <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+              <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
                 Proof
               </h2>
               <p className="mt-3 text-muted">
@@ -207,7 +213,7 @@ export default async function ServiceDetailPage({
         <section className="bg-surface">
           <Container className="py-16 sm:py-20">
             <Reveal>
-              <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+              <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
                 Industries we apply this in
               </h2>
             </Reveal>

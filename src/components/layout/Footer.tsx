@@ -20,7 +20,8 @@ export default function Footer() {
               className="logo-ink h-4 w-auto"
             />
             <p className="mt-4 max-w-xs text-sm text-muted">
-              {site.tagline}. Data & AI solutions for mid-market enterprises.
+              {site.tagline}. Data and AI for mid-market enterprises, built for
+              regulated, mission-critical environments.
             </p>
           </div>
 

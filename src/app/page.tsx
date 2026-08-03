@@ -12,8 +12,8 @@ export default function Home() {
       <IndustriesPreview />
       <ProofStats />
       <CtaBand
-        title="Ready to put your data to work?"
-        body="Tell us the outcome you're chasing — we'll show you the fastest credible path with AI and data."
+        title="Let's put your data to work."
+        body="Tell us the outcome you need. We'll show you the fastest credible path there."
       />
     </>
   );

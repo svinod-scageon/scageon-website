@@ -79,8 +79,21 @@ export default function SolutionCard({
       {!solution.comingSoon && (
         <div className="mt-5 flex-1 space-y-4">
           <p className="leading-relaxed text-text">{solution.whatItIs}</p>
-          {solution.delivers && (
-            <p className="text-sm leading-relaxed text-muted">{solution.delivers}</p>
+          {solution.delivers.length > 0 && (
+            <ul className="space-y-2">
+              {solution.delivers.map((d) => (
+                <li
+                  key={d}
+                  className="flex gap-2.5 text-sm leading-relaxed text-muted"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
+                  />
+                  {d}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       )}

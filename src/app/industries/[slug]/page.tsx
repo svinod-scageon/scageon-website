@@ -6,6 +6,7 @@ import PageHero from "@/components/sections/PageHero";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/motion/Reveal";
 import SolutionCard from "@/components/sections/SolutionCard";
+import BulletMark from "@/components/ui/BulletMark";
 import CtaBand from "@/components/sections/CtaBand";
 import { industries, getIndustry } from "@/content/industries";
 import { getCaseStudy } from "@/content/caseStudies";
@@ -59,9 +60,14 @@ export default async function IndustryDetailPage({
             <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-accent-strong">
               The landscape
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-text sm:text-xl">
-              {ind.landscape}
-            </p>
+            <ul className="mt-6 space-y-4">
+              {ind.landscape.map((point) => (
+                <li key={point} className="flex items-start gap-3.5">
+                  <BulletMark className="text-accent" />
+                  <p className="text-lg leading-relaxed text-text">{point}</p>
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </Container>
       </section>
@@ -70,7 +76,7 @@ export default async function IndustryDetailPage({
       <section className="bg-bg">
         <Container className="py-16 sm:py-20">
           <Reveal>
-            <h2 className="font-[family-name:var(--font-inter-tight)] text-3xl font-semibold text-text">
+            <h2 className="font-[family-name:var(--font-newsreader)] text-3xl font-semibold text-text">
               What we do here
             </h2>
             <p className="mt-3 max-w-2xl text-muted">
@@ -98,7 +104,7 @@ export default async function IndustryDetailPage({
         <section className="bg-surface">
           <Container className="py-16 sm:py-20">
             <Reveal>
-              <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+              <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
                 Outcomes
               </h2>
               <p className="mt-3 text-muted">
@@ -114,9 +120,7 @@ export default async function IndustryDetailPage({
                     className="group flex items-center justify-between gap-3 rounded-2xl border border-border bg-bg px-5 py-4 transition-colors hover:border-accent/50"
                   >
                     <span className="flex items-center gap-3 text-text">
-                      <span aria-hidden className="text-accent">
-                        ⊙
-                      </span>
+                      <BulletMark className="mt-0 text-accent" />
                       {o.text}
                     </span>
                     <ArrowUpRight className="h-4 w-4 shrink-0 text-accent-strong opacity-0 transition-opacity group-hover:opacity-100" />
@@ -133,7 +137,7 @@ export default async function IndustryDetailPage({
         <section className="bg-bg">
           <Container className="py-16 sm:py-20">
             <Reveal>
-              <h2 className="font-[family-name:var(--font-inter-tight)] text-2xl font-semibold text-text">
+              <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
                 Services powering this
               </h2>
             </Reveal>

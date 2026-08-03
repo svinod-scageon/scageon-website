@@ -5,9 +5,12 @@ export const services: Service[] = [
     slug: "data-engineering",
     name: "Data Engineering",
     headline: "The data foundation everything else runs on.",
-    sub: "We build the pipelines, warehouses, and lakehouses that turn scattered sources into one reliable, governed layer.",
-    overview:
-      "Analytics and AI are only as good as the data beneath them. Most teams lose weeks to brittle exports, metrics that don't agree, and pipelines no one trusts — and every new dashboard or model just inherits the mess. We design and build the ingestion, modeling, and governance layer that turns scattered sources into one dependable, well-governed foundation, so everything downstream is faster to build and safe to trust.",
+    sub: "Pipelines, warehouses, and lakehouses that turn scattered sources into one governed, reliable layer.",
+    overview: [
+      "Analytics and AI are only as good as the data beneath them.",
+      "Most teams lose weeks to brittle exports, metrics that disagree, and pipelines no one trusts — and every new dashboard inherits the mess.",
+      "We build the ingestion, modeling, and governance layer that makes everything downstream faster to build and safe to trust.",
+    ],
     deliver: [
       {
         title: "Real-time & batch pipelines",
@@ -35,7 +38,7 @@ export const services: Service[] = [
       },
     ],
     howWeWork:
-      "Governance-first: we build security, lineage, quality, and access control in from day one — and meet your stack where it is instead of forcing a rebuild.",
+      "Governance-first. Security, lineage, quality, and access control go in from day one — and we meet your stack where it is instead of forcing a rebuild.",
     approach: [
       { title: "Discover & map", desc: "We inventory every source, owner, and definition — and agree what each metric actually means — before writing a line of pipeline." },
       { title: "Model for use", desc: "We design the warehouse or lakehouse around the questions you'll actually ask, not the shape of the source systems." },
@@ -84,8 +87,11 @@ export const services: Service[] = [
     name: "Data Analytics",
     headline: "Data turned into decisions people actually make.",
     sub: "Live dashboards, revenue intelligence, and self-serve analytics — built on data your teams can trust.",
-    overview:
-      "Everyone claims to be \"data-driven\" — yet the meeting still opens with an argument about whose number is right. Reports go stale the moment they're exported, dashboards multiply faster than anyone can trust them, and the questions that matter sit in a queue. We build the living analytics layer — a governed metric model, dashboards, and real-time intelligence — that gives every team one agreed picture and the confidence to act on it now, not next quarter.",
+    overview: [
+      "Everyone claims to be data-driven — yet the meeting still opens with an argument about whose number is right.",
+      "Reports go stale on export, dashboards multiply faster than anyone can trust them, and the questions that matter sit in a queue.",
+      "We build the governed metric model, dashboards, and real-time intelligence that give every team one agreed picture — and the confidence to act on it now.",
+    ],
     deliver: [
       {
         title: "Executive & operational dashboards",
@@ -159,8 +165,11 @@ export const services: Service[] = [
     name: "Software Engineering",
     headline: "The software your business runs on — built and modernized.",
     sub: "From new products to zero-downtime migrations. Secure, tested, and built to scale.",
-    overview:
-      "Every business becomes a software business — and every software system eventually becomes the thing slowing it down. Roadmaps stall behind fragile code, a risky migration keeps getting postponed, and \"we'll add tests later\" never arrives. We take software from architecture to production and keep it healthy: shipping new platforms and modernizing legacy ones without disrupting live operations — secure by design, covered by tests, and built to scale with you.",
+    overview: [
+      "Every business becomes a software business — and every system eventually becomes the thing slowing it down.",
+      "Roadmaps stall behind fragile code, a risky migration keeps getting postponed, and \"we'll add tests later\" never arrives.",
+      "We take software from architecture to production and keep it healthy — new platforms and legacy modernization alike, without disrupting live operations.",
+    ],
     deliver: [
       {
         title: "Full-stack product & platform builds",
@@ -188,7 +197,7 @@ export const services: Service[] = [
       },
     ],
     howWeWork:
-      "We de-risk change: run old and new systems in parallel, gate every release with automated checks, and keep a complete audit trail so nothing ships unseen.",
+      "We de-risk change. Old and new run in parallel, every release is gated by automated checks, and a complete audit trail means nothing ships unseen.",
     approach: [
       { title: "Architect for change", desc: "We design for the next three years — clear boundaries, documented decisions — not just the next sprint." },
       { title: "Run in parallel", desc: "New systems prove themselves alongside the old, so cutover is a switch, not a leap of faith." },
@@ -233,8 +242,11 @@ export const services: Service[] = [
     name: "AI Automation",
     headline: "Custom AI that does the work — reliably, in production.",
     sub: "Multi-agent systems, computer vision, and generative AI, with the guardrails to run for real.",
-    overview:
-      "Most AI never leaves the demo — impressive in a slide, unpredictable the moment real data hits it. Pilots stall without guardrails, no one trusts an output they can't check, and \"the model works\" quietly becomes \"the model worked that once.\" We design, build, and operate custom AI that automates real workflows and earns trust — multi-agent systems, computer vision, and generative AI, shipped with the monitoring, guardrails, and MLOps it takes to run every day.",
+    overview: [
+      "Most AI never leaves the demo — impressive in a slide, unpredictable the moment real data hits it.",
+      "Pilots stall without guardrails, and no one trusts an output they can't check.",
+      "We design, build, and operate custom AI that automates real workflows — shipped with the monitoring, guardrails, and MLOps it takes to run every day.",
+    ],
     deliver: [
       {
         title: "Custom models & multi-agent systems",
@@ -262,7 +274,7 @@ export const services: Service[] = [
       },
     ],
     howWeWork:
-      "Outcome-first and compliance-ready: we set the acceptance bar, keep humans in the loop where judgment matters, and instrument every model for accuracy, drift, and cost.",
+      "Outcome-first and compliance-ready. We set the acceptance bar, keep humans in the loop where judgment matters, and instrument every model for accuracy, drift, and cost.",
     approach: [
       { title: "Anchor to the metric", desc: "We start from the business outcome and the acceptance bar, then choose the simplest model that clears it." },
       { title: "Keep humans in the loop", desc: "Safeguards, approvals, and confidence thresholds wherever judgment matters." },
@@ -312,8 +324,11 @@ export const services: Service[] = [
     name: "Cloud",
     headline: "Cloud that's secure, scalable, and calm.",
     sub: "Architecture, migration, and DevOps across AWS, Azure, and GCP — engineered for uptime and compliance.",
-    overview:
-      "Cloud should be an advantage, not an on-call headache. Bills creep, environments drift, a \"quick\" migration turns into months, and every incident is a fire drill because nothing's reproducible. We design, migrate, and operate infrastructure as code that scales with demand, holds up to audit, and stays quiet — so your team ships features instead of fighting fires.",
+    overview: [
+      "Cloud should be an advantage, not an on-call headache.",
+      "Bills creep, environments drift, a \"quick\" migration turns into months, and every incident is a fire drill because nothing is reproducible.",
+      "We design, migrate, and operate infrastructure as code that scales with demand, holds up to audit, and stays quiet.",
+    ],
     deliver: [
       {
         title: "Architecture & migration",

@@ -51,6 +51,31 @@ const menus: { label: string; href: string; items: MenuItem[] }[] = [
 
 const flatLinks = [{ label: "About", href: "/about" }];
 
+/**
+ * "Explore" is a concept menu — a preview of what the site could host
+ * (culture, colleague writing, social). Items are intentionally display-only:
+ * rendered as plain elements, so nothing is clickable or keyboard-focusable.
+ * Only the trigger opens the panel.
+ */
+const exploreGroups: { group: string; items: { label: string; blurb: string }[] }[] = [
+  {
+    group: "People & Culture",
+    items: [
+      { label: "Life at Scageon", blurb: "Culture, teams, and the everyday" },
+      { label: "Celebrations & Milestones", blurb: "Festivals, wins, and work anniversaries" },
+      { label: "Team Spotlights", blurb: "The people behind the projects" },
+    ],
+  },
+  {
+    group: "Writing",
+    items: [
+      { label: "Blog", blurb: "Perspective on data, AI, and delivery" },
+      { label: "Engineering Notes", blurb: "Technical write-ups from our engineers" },
+      { label: "Newsletter", blurb: "A monthly round-up" },
+    ],
+  },
+];
+
 const link =
   "relative py-2 text-sm transition-colors after:absolute after:-bottom-px after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 hover:after:scale-x-100";
 
@@ -167,6 +192,55 @@ export default function Navbar() {
             );
           })}
 
+          {/* Explore — concept menu; trigger opens, contents are display-only */}
+          <li className="group relative">
+            <button
+              type="button"
+              onClick={(e) => e.currentTarget.blur()}
+              className={cn(link, "flex items-center gap-1", "text-muted hover:text-text")}
+              aria-haspopup="true"
+            >
+              Explore
+              <ChevronDown
+                className="h-3.5 w-3.5 opacity-60 transition-transform duration-300 group-hover:rotate-180"
+                aria-hidden
+              />
+            </button>
+
+            <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="w-72 overflow-hidden rounded-lg border border-border bg-surface shadow-lg">
+                <div className="p-2">
+                  {exploreGroups.map((g, gi) => (
+                    <div
+                      key={g.group}
+                      className={cn(gi > 0 && "mt-1 border-t border-border pt-2")}
+                    >
+                      <p className="px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+                        {g.group}
+                      </p>
+                      {g.items.map((item) => (
+                        <div
+                          key={item.label}
+                          className="flex cursor-default flex-col rounded-md px-3 py-2.5"
+                        >
+                          <span className="text-sm font-medium text-muted/50">
+                            {item.label}
+                          </span>
+                          <span className="mt-0.5 text-xs text-muted/40">
+                            {item.blurb}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+                <div className="cursor-default border-t border-border px-5 py-3 font-mono text-xs uppercase tracking-[0.12em] text-muted/50">
+                  LinkedIn
+                </div>
+              </div>
+            </div>
+          </li>
+
           {flatLinks.map((l) => (
             <li key={l.href}>
               <Link
@@ -233,6 +307,28 @@ export default function Navbar() {
               </div>
             </div>
           ))}
+          {/* Explore — display-only, same as desktop */}
+          <div className="border-b border-border py-3">
+            <span className="block text-base font-medium text-text">Explore</span>
+            {exploreGroups.map((g) => (
+              <div key={g.group} className="mt-3">
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+                  {g.group}
+                </p>
+                <div className="mt-1.5 grid gap-1.5">
+                  {g.items.map((item) => (
+                    <span key={item.label} className="text-sm text-muted/50">
+                      {item.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <span className="mt-3 block font-mono text-xs uppercase tracking-[0.12em] text-muted/50">
+              LinkedIn
+            </span>
+          </div>
+
           {flatLinks.map((l) => (
             <Link
               key={l.href}

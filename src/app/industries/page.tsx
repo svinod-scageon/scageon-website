@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "How Scageon builds AI and data platforms for compliance-critical, mission-critical industries — Healthcare, Banking & Finance, and more.",
+    "How Scageon builds AI and data platforms for compliance-critical industries — Healthcare, Banking & Finance, Retail, Automotive, Media & Entertainment, and OTT.",
 };
 
 export default function IndustriesPage() {
@@ -20,8 +20,8 @@ export default function IndustriesPage() {
     <>
       <PageHero
         eyebrow="Industries"
-        title="Built for the industries that can't afford to get it wrong."
-        sub="Compliance-critical, mission-critical, real-time. Explore how we work in each."
+        title="Six industries. Production systems in each."
+        sub="From hospital command centers to core banking migrations — the work, the outcomes, and the case studies behind each."
         crumbs={[{ label: "Home", href: "/" }, { label: "Industries" }]}
       />
 
