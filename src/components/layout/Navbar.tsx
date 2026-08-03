@@ -133,7 +133,7 @@ export default function Navbar() {
                   onClick={(e) => e.currentTarget.blur()}
                   className={cn(
                     link,
-                    "flex items-center gap-1",
+                    "flex cursor-pointer items-center gap-1",
                     active ? "text-text after:scale-x-100" : "text-muted hover:text-text"
                   )}
                   aria-haspopup="true"
@@ -197,7 +197,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={(e) => e.currentTarget.blur()}
-              className={cn(link, "flex items-center gap-1", "text-muted hover:text-text")}
+              className={cn(link, "flex cursor-pointer items-center gap-1", "text-muted hover:text-text")}
               aria-haspopup="true"
             >
               Explore
@@ -269,7 +269,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="col-start-3 inline-flex items-center justify-center justify-self-end rounded-md p-2 text-text md:hidden"
+          className="col-start-3 inline-flex cursor-pointer items-center justify-center justify-self-end rounded-md p-2 text-text md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}

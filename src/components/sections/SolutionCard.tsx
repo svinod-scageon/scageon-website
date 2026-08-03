@@ -108,7 +108,7 @@ export default function SolutionCard({
         >
           <Accordion.Item value="cs">
             <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full items-center justify-between gap-2 py-2 text-left text-sm font-medium text-accent-strong">
+              <Accordion.Trigger className="group flex w-full cursor-pointer items-center justify-between gap-2 py-2 text-left text-sm font-medium text-accent-strong">
                 View case study
                 <Plus className="h-4 w-4 transition-transform duration-300 group-data-[state=open]:rotate-45" />
               </Accordion.Trigger>
