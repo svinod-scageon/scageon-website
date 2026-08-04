@@ -32,7 +32,7 @@ export default function IndustriesPage() {
               const disabled = !ind.published;
               const card = (
                 <SpotlightCard
-                  spotlightColor="rgba(31, 94, 255, 0.16)"
+                  spotlightColor="rgba(11, 110, 118, 0.16)"
                   className={cn(
                     "flex h-full flex-col p-6 transition-all duration-300",
                     disabled

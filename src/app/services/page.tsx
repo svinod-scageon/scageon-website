@@ -33,7 +33,7 @@ export default function ServicesPage() {
               <Reveal key={s.slug} delay={i * 0.06}>
                 <Link href={`/services/${s.slug}`} className="group block h-full">
                   <SpotlightCard
-                    spotlightColor="rgba(31, 94, 255, 0.18)"
+                    spotlightColor="rgba(11, 110, 118, 0.18)"
                     className="flex h-full flex-col transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.015] group-hover:border-accent/50 group-hover:shadow-xl"
                   >
                     <span className="font-mono text-xs uppercase tracking-[0.18em] text-accent-strong">

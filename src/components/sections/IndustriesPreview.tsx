@@ -14,7 +14,7 @@ export default function IndustriesPreview() {
         <SectionHeading
           eyebrow="Where we do it"
           title="Built for the industries that can't afford to get it wrong."
-          intro="Compliance-critical, real-time, and unforgiving of downtime."
+          intro="Compliance-critical, real-time, and **unforgiving of downtime**."
         />
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -22,7 +22,7 @@ export default function IndustriesPreview() {
             const disabled = !ind.published;
             const inner = (
               <SpotlightCard
-                spotlightColor="rgba(31, 94, 255, 0.16)"
+                spotlightColor="rgba(11, 110, 118, 0.16)"
                 className={cn(
                   "flex h-full flex-col p-6 transition-all duration-300",
                   disabled

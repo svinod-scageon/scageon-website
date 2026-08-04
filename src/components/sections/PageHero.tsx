@@ -29,7 +29,7 @@ export default function PageHero({
       <SectionParticles
         count={110}
         opacity={60}
-        colors={["#1F5EFF", "#6b86ff", "#9aa3af"]}
+        colors={["#0B6E76", "#5fa3a8", "#9aa3af"]}
       />
       <Container className="relative pb-16 pt-5 sm:pb-20 sm:pt-8">
         {crumbs && (

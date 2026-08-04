@@ -16,7 +16,7 @@ export default function SectionParticles({
   opacity = 45,
   speed = 0.06,
   // default tuned for DARK sections; pass darker colors for light sections
-  colors = ["#1F5EFF", "#8aa6ff", "#e6edff"],
+  colors = ["#0B6E76", "#5fa3a8", "#cfe6e8"],
 }: {
   count?: number;
   opacity?: number;

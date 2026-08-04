@@ -7,6 +7,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/motion/Reveal";
 import Chips from "@/components/ui/Chips";
 import BulletMark from "@/components/ui/BulletMark";
+import { renderBold } from "@/components/ui/Bold";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
 import CtaBand from "@/components/sections/CtaBand";
 import { services, getService } from "@/content/services";
@@ -68,7 +69,7 @@ export default async function ServiceDetailPage({
               {service.overview.map((point) => (
                 <li key={point} className="flex items-start gap-3.5">
                   <BulletMark className="text-accent" />
-                  <p className="leading-relaxed text-muted">{point}</p>
+                  <p className="leading-relaxed text-muted">{renderBold(point)}</p>
                 </li>
               ))}
             </ul>
@@ -105,7 +106,7 @@ export default async function ServiceDetailPage({
               How we work
             </h2>
             <p className="mt-3 text-lg leading-relaxed text-muted">
-              {service.howWeWork}
+              {renderBold(service.howWeWork)}
             </p>
           </Reveal>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -185,7 +186,7 @@ export default async function ServiceDetailPage({
                     className="group block h-full"
                   >
                     <SpotlightCard
-                      spotlightColor="rgba(31, 94, 255, 0.16)"
+                      spotlightColor="rgba(11, 110, 118, 0.16)"
                       className="flex h-full flex-col p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.015] group-hover:border-accent/50 group-hover:shadow-xl"
                     >
                       <span className="font-mono text-xs uppercase tracking-[0.16em] text-muted">

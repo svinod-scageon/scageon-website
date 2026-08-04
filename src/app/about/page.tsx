@@ -4,6 +4,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/motion/Reveal";
 import CtaBand from "@/components/sections/CtaBand";
 import BulletMark from "@/components/ui/BulletMark";
+import { renderBold } from "@/components/ui/Bold";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 const whoWeAre = [
   "We design, build, and operate the platforms that turn scattered data into real-time decisions and production-grade AI.",
   "We take on the systems businesses depend on — hospital command centers, core banking migrations, subscriber intelligence.",
-  "Security and compliance are first-class requirements here, not an afterthought.",
+  "Security and compliance are **first-class requirements** here, not an afterthought.",
 ];
 
 const values = [
@@ -49,14 +50,15 @@ export default function AboutPage() {
               Who we are
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-text">
-              Scageon is a data and AI partner for mid-market enterprises, working
-              across healthcare, banking, and beyond.
+              {renderBold(
+                "Scageon is a data and AI partner for mid-market enterprises, working **across healthcare, banking, and beyond**."
+              )}
             </p>
             <ul className="mt-6 space-y-4">
               {whoWeAre.map((point) => (
                 <li key={point} className="flex items-start gap-3.5">
                   <BulletMark className="text-accent" />
-                  <p className="leading-relaxed text-muted">{point}</p>
+                  <p className="leading-relaxed text-muted">{renderBold(point)}</p>
                 </li>
               ))}
             </ul>

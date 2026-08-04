@@ -6,6 +6,7 @@ import { Plus } from "lucide-react";
 import type { Solution, CaseStudy } from "@/content/types";
 import { cn } from "@/lib/utils";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
+import { renderBold } from "@/components/ui/Bold";
 
 function DetailBlock({ label, items }: { label: string; items?: string[] }) {
   if (!items || items.length === 0) return null;
@@ -18,7 +19,7 @@ function DetailBlock({ label, items }: { label: string; items?: string[] }) {
         {items.map((it) => (
           <li key={it} className="flex gap-2.5 text-sm leading-relaxed text-muted">
             <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-            {it}
+            {renderBold(it)}
           </li>
         ))}
       </ul>
@@ -52,7 +53,7 @@ export default function SolutionCard({
   return (
     <div id={anchorId} className="h-full scroll-mt-24">
       <SpotlightCard
-        spotlightColor="rgba(31, 94, 255, 0.14)"
+        spotlightColor="rgba(11, 110, 118, 0.14)"
         className={cn(
           "flex h-full flex-col p-7 transition-all duration-300 sm:p-8",
           solution.comingSoon
@@ -78,7 +79,7 @@ export default function SolutionCard({
 
       {!solution.comingSoon && (
         <div className="mt-5 flex-1 space-y-4">
-          <p className="leading-relaxed text-text">{solution.whatItIs}</p>
+          <p className="leading-relaxed text-text">{renderBold(solution.whatItIs)}</p>
           {solution.delivers.length > 0 && (
             <ul className="space-y-2">
               {solution.delivers.map((d) => (
@@ -108,7 +109,7 @@ export default function SolutionCard({
         >
           <Accordion.Item value="cs">
             <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full items-center justify-between gap-2 py-2 text-left text-sm font-medium text-accent-strong">
+              <Accordion.Trigger className="group flex w-full cursor-pointer items-center justify-between gap-2 py-2 text-left text-sm font-medium text-accent-strong">
                 View case study
                 <Plus className="h-4 w-4 transition-transform duration-300 group-data-[state=open]:rotate-45" />
               </Accordion.Trigger>
@@ -119,7 +120,7 @@ export default function SolutionCard({
                   {caseStudy.client}
                 </p>
                 {caseStudy.overview && (
-                  <p className="leading-relaxed text-text">{caseStudy.overview}</p>
+                  <p className="leading-relaxed text-text">{renderBold(caseStudy.overview)}</p>
                 )}
                 <DetailBlock label="Problem" items={caseStudy.problem} />
                 <DetailBlock label="Solution" items={caseStudy.solution} />

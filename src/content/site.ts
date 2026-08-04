@@ -3,7 +3,7 @@ export const site = {
   legalName: "Scageon Technologies Private Limited",
   tagline: "Enabling an AI-Powered Future",
   description:
-    "Data and AI for mid-market enterprises — data platforms, production AI, software, and cloud, engineered for regulated, mission-critical environments.",
+    "Data and AI for mid-market enterprises — data platforms, production AI, software, and cloud, engineered for **regulated, mission-critical environments**.",
   url: "https://www.scageon.com",
   email: "parag.agarwal@scageon.com",
   phone: "+91 9956953666",

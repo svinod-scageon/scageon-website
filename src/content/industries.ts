@@ -14,14 +14,14 @@ export const industries: Industry[] = [
     landscape: [
       "Healthcare runs on data scattered across systems, under relentless staffing pressure, and bound by strict compliance.",
       "Decisions that shape patient care and capacity are still made manually, or reactively.",
-      "We turn that fragmented data into real-time, compliant decision support — governed from day one, so hospitals move faster without trading away safety.",
+      "We turn that fragmented data into real-time, compliant decision support — governed from day one, so hospitals move faster **without trading away safety**.",
     ],
     solutions: [
       {
         title: "Hospital Command Center",
         tagline: "One real-time view of every operation.",
         whatItIs:
-          "An integrated digital platform that consolidates hospital operations into a single, real-time operational view.",
+          "An integrated digital platform that consolidates hospital operations into **a single, real-time operational view**.",
         delivers: [
           "Capacity planning and resource optimization",
           "Predictive analytics for proactive decisions",
@@ -45,7 +45,7 @@ export const industries: Industry[] = [
         title: "Remote Patient Monitoring",
         tagline: "Continuous care beyond hospital walls.",
         whatItIs:
-          "A clinical operations platform for delivering acute-level hospital care in patients' homes — managing the full episode from referral and eligibility to remote monitoring and discharge.",
+          "A clinical operations platform for delivering acute-level hospital care in patients' homes — managing **the full episode from referral and eligibility to remote monitoring and discharge**.",
         delivers: [
           "Structured intake and physician review with documented rationale",
           "Four-section home-eligibility assessment",
@@ -75,14 +75,14 @@ export const industries: Industry[] = [
     landscape: [
       "Banking runs on legacy cores, fragmented access control, and unforgiving regulatory and audit demands.",
       "A single change can mean downtime, data loss, or a compliance gap.",
-      "We modernize core platforms and back-office operations with zero-downtime migration, end-to-end auditability, and security built into every release.",
+      "We modernize core platforms and back-office operations with **zero-downtime migration**, end-to-end auditability, and security built into every release.",
     ],
     solutions: [
       {
         title: "Core Banking Modernization",
         tagline: "Migrate without the downtime.",
         whatItIs:
-          "A legacy-to-modern platform migration that lets old and new core systems run side by side, with no disruption to live banking operations.",
+          "A legacy-to-modern platform migration that lets old and new core systems run side by side, with **no disruption to live banking operations**.",
         delivers: [
           "Automatic system routing and instant customer-status lookup",
           "Built-in backup and safety checks",
@@ -108,7 +108,7 @@ export const industries: Industry[] = [
         title: "Self-Serve Customer Alerts",
         tagline: "Business-owned notifications, safely.",
         whatItIs:
-          "A no-code template and routing engine that lets business teams author and publish customer Email/SMS alerts without engineering.",
+          "A no-code template and routing engine that lets business teams author and publish customer Email/SMS alerts **without engineering**.",
         delivers: [
           "Two-step template manager owned by business teams",
           "One config that fans out to multiple parties and channels",
@@ -137,7 +137,7 @@ export const industries: Industry[] = [
     landscape: [
       "Retail runs on data that rarely connects.",
       "The POS knows what sold and the cameras see what happened — but the two never meet.",
-      "We fuse transactions, live store vision, and product journeys into one real-time view, so teams act while it still matters.",
+      "We fuse transactions, live store vision, and product journeys into one real-time view, so teams act **while it still matters**.",
     ],
     solutions: [
       {
@@ -172,7 +172,7 @@ export const industries: Industry[] = [
     landscape: [
       "Automotive marketing moves fast, and at scale.",
       "Every model, market, and variant needs its own campaign-ready creative — quickly, and on-brand.",
-      "We build AI creative platforms that generate, validate, and package visuals on demand.",
+      "We build AI creative platforms that generate, validate, and package visuals **on demand**.",
     ],
     solutions: [
       {
@@ -207,14 +207,14 @@ export const industries: Industry[] = [
     landscape: [
       "Media runs on volume and trust.",
       "Thousands of assets to quality-check, and sensitive audience data to activate — all under tight compliance.",
-      "We automate media QC and build privacy-safe data collaboration, so teams ship faster without risking either.",
+      "We automate media QC and build privacy-safe data collaboration, so teams ship faster **without risking either**.",
     ],
     solutions: [
       {
         title: "AI Media Quality Control",
         tagline: "Automated audio-video validation.",
         whatItIs:
-          "An AI system that automates video quality control — detecting anomalies across language, visuals, and audio, with timestamp-based reports.",
+          "An AI system that automates video quality control — detecting anomalies across language, visuals, and audio, with **timestamp-based reports**.",
         delivers: [
           "Linguistic analysis, visual inspection, and audio evaluation",
           "Timestamp-based anomaly reports",
@@ -226,7 +226,7 @@ export const industries: Industry[] = [
         title: "Privacy-Safe Data Collaboration",
         tagline: "Share data without exposing it.",
         whatItIs:
-          "A data collaboration platform overcoming native Snowflake limits — secure, privacy-safe, multi-party data sharing for advertising and media.",
+          "A data collaboration platform overcoming native Snowflake limits — **secure, privacy-safe, multi-party data sharing** for advertising and media.",
         delivers: [
           "Secure sharing across advertisers, agencies, and data partners",
           "Multi-provider enrichment and automated workflows",
@@ -254,7 +254,7 @@ export const industries: Industry[] = [
     landscape: [
       "Streaming lives and dies by subscribers.",
       "Yet subscription, payment, and viewing data sit fragmented across systems.",
-      "We unify them into a single source of truth — turning scattered events into clear revenue and retention intelligence.",
+      "We unify them into a single source of truth — turning scattered events into **clear revenue and retention intelligence**.",
     ],
     solutions: [
       {

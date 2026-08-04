@@ -6,6 +6,7 @@ import Container from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import SectionParticles from "@/components/sections/SectionParticles";
 import BulletMark from "@/components/ui/BulletMark";
+import { renderBold } from "@/components/ui/Bold";
 import { site } from "@/content/site";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -23,7 +24,7 @@ export default function Hero() {
       <SectionParticles
         count={70}
         opacity={55}
-        colors={["#1F5EFF", "#6b86ff", "#9aa3af"]}
+        colors={["#0B6E76", "#5fa3a8", "#9aa3af"]}
       />
       <Container className="relative pb-20 pt-6 sm:pb-28 sm:pt-8 lg:pb-32 lg:pt-10">
         <div className="max-w-4xl">
@@ -46,7 +47,7 @@ export default function Hero() {
             {...rise(0.12)}
             className="mt-6 max-w-xl text-lead text-muted"
           >
-            {site.description}
+            {renderBold(site.description)}
           </motion.p>
 
           <motion.div {...rise(0.18)} className="mt-9 flex flex-wrap items-center gap-3">

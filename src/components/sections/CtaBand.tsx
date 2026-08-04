@@ -11,6 +11,7 @@ import Container from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import Reveal from "@/components/motion/Reveal";
 import SectionParticles from "@/components/sections/SectionParticles";
+import { renderBold } from "@/components/ui/Bold";
 
 export default function CtaBand({
   title = "Let's build what's next.",
@@ -58,7 +59,7 @@ export default function CtaBand({
           <h2 className="font-[family-name:var(--font-newsreader)] text-h2 font-semibold text-white">
             {title}
           </h2>
-          <p className="mt-4 text-muted-dark">{body}</p>
+          <p className="mt-4 text-muted-dark">{renderBold(body, "dark")}</p>
           <div className="mt-8 flex justify-center">
             <ButtonLink href={href} size="lg" className="sweep">
               {cta}

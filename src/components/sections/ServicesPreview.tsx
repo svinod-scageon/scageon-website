@@ -15,7 +15,7 @@ export default function ServicesPreview() {
         <SectionHeading
           eyebrow="What we do"
           title="Five disciplines. One engineering standard."
-          intro="From the data layer to production AI — and the software and cloud it all runs on. Each stands alone, or works as one."
+          intro="From the data layer to production AI — and the software and cloud it all runs on. **Each stands alone, or works as one.**"
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -23,7 +23,7 @@ export default function ServicesPreview() {
             <Reveal key={s.slug} delay={i * 0.06}>
               <Link href={`/services/${s.slug}`} className="group block h-full">
                 <SpotlightCard
-                  spotlightColor="rgba(31, 94, 255, 0.18)"
+                  spotlightColor="rgba(11, 110, 118, 0.18)"
                   className="flex h-full flex-col transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.015] group-hover:border-accent/50 group-hover:shadow-xl"
                 >
                   <span className="font-mono text-xs uppercase tracking-[0.18em] text-accent-strong">
