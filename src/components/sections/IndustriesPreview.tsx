@@ -14,7 +14,7 @@ export default function IndustriesPreview() {
         <SectionHeading
           eyebrow="Where we do it"
           title="Built for the industries that can't afford to get it wrong."
-          intro="Compliance-critical, real-time, and unforgiving of downtime."
+          intro="Compliance-critical, real-time, and **unforgiving of downtime**."
         />
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

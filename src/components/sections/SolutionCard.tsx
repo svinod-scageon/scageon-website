@@ -6,6 +6,7 @@ import { Plus } from "lucide-react";
 import type { Solution, CaseStudy } from "@/content/types";
 import { cn } from "@/lib/utils";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
+import { renderBold } from "@/components/ui/Bold";
 
 function DetailBlock({ label, items }: { label: string; items?: string[] }) {
   if (!items || items.length === 0) return null;
@@ -18,7 +19,7 @@ function DetailBlock({ label, items }: { label: string; items?: string[] }) {
         {items.map((it) => (
           <li key={it} className="flex gap-2.5 text-sm leading-relaxed text-muted">
             <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-            {it}
+            {renderBold(it)}
           </li>
         ))}
       </ul>
@@ -78,7 +79,7 @@ export default function SolutionCard({
 
       {!solution.comingSoon && (
         <div className="mt-5 flex-1 space-y-4">
-          <p className="leading-relaxed text-text">{solution.whatItIs}</p>
+          <p className="leading-relaxed text-text">{renderBold(solution.whatItIs)}</p>
           {solution.delivers.length > 0 && (
             <ul className="space-y-2">
               {solution.delivers.map((d) => (
@@ -119,7 +120,7 @@ export default function SolutionCard({
                   {caseStudy.client}
                 </p>
                 {caseStudy.overview && (
-                  <p className="leading-relaxed text-text">{caseStudy.overview}</p>
+                  <p className="leading-relaxed text-text">{renderBold(caseStudy.overview)}</p>
                 )}
                 <DetailBlock label="Problem" items={caseStudy.problem} />
                 <DetailBlock label="Solution" items={caseStudy.solution} />

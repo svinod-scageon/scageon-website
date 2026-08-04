@@ -15,7 +15,7 @@ export default function ServicesPreview() {
         <SectionHeading
           eyebrow="What we do"
           title="Five disciplines. One engineering standard."
-          intro="From the data layer to production AI — and the software and cloud it all runs on. Each stands alone, or works as one."
+          intro="From the data layer to production AI — and the software and cloud it all runs on. **Each stands alone, or works as one.**"
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -17,7 +17,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Forecasting and recommendations for proactive decisions",
     ],
     impact: [
-      "20% staff productivity gain",
+      "**20%** staff productivity gain",
       "Improved bed capacity, patient flow, and care quality",
       "Mission-critical, real-time decision support",
     ],
@@ -32,7 +32,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["ai-automation", "software-engineering"],
     client: "One of Asia's largest private hospital networks",
     overview:
-      "An AI-driven workforce-automation platform that digitizes nurse rostering, shift management, and leave workflows across multiple hospitals — replacing manual operations with a real-time system.",
+      "An AI-driven workforce-automation platform that digitizes nurse rostering, shift management, and leave workflows across multiple hospitals — replacing manual operations with **a real-time system**.",
     solution: [
       "AI engine auto-generates conflict-free, compliance-ready rosters in minutes, not days",
       "Real-time workforce intelligence: staffing gaps, skill shortfalls, and overtime risks surfaced instantly",
@@ -79,9 +79,9 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Continuous security scanning before deployment",
     ],
     impact: [
-      "~30–40% reduced response times",
+      "**~30–40%** reduced response times",
       "Zero-downtime migration with no operational disruption",
-      "~25–30% faster delivery of new banking features",
+      "**~25–30%** faster delivery of new banking features",
     ],
     tech: [
       "Java",
@@ -104,7 +104,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["software-engineering"],
     client: "A leading regional bank",
     overview:
-      "A centralized back-office platform that unifies access, control, and audit across sensitive banking APIs and configuration.",
+      "A centralized back-office platform that **unifies access, control, and audit** across sensitive banking APIs and configuration.",
     problem: [
       "Sensitive backend APIs configurable only by engineers — no controlled self-serve interface",
       "No unified, traceable access control across privileged banking operations",
@@ -142,7 +142,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["software-engineering"],
     client: "A leading regional bank",
     overview:
-      "A self-serve notification template and multi-party alert routing engine — letting business teams author and publish customer Email/SMS alerts without engineering.",
+      "A self-serve notification template and multi-party alert routing engine — letting business teams author and publish customer Email/SMS alerts **without engineering**.",
     problem: [
       "Alert templates hard-coded and engineering-deployed — no business self-serve",
       "Multi-party events (payout sender + receiver) forced duplicated, error-prone configs",
@@ -183,7 +183,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["ai-automation", "data-analytics"],
     client: "A US convenience retail chain",
     overview:
-      "A real-time intelligence platform that fuses three data streams into one operational dashboard, with a multi-agent AI system that operates as a virtual store-management team.",
+      "A real-time intelligence platform that fuses three data streams into one operational dashboard, with a multi-agent AI system that operates as **a virtual store-management team**.",
     problem: [
       "Sales data disconnected from physical store behavior",
       "CCTV footage reviewed reactively, never analytically",
@@ -220,7 +220,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["ai-automation"],
     client: "A global automotive company",
     overview:
-      "A marketing creative platform — AI product photography and campaign-ready visuals, produced and validated at scale.",
+      "A marketing creative platform — AI product photography and campaign-ready visuals, produced and validated **at scale**.",
     solution: [
       "AI-driven product photography",
       "Instant, campaign-ready visuals",
@@ -269,9 +269,9 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Timestamp-based anomaly reports",
     ],
     impact: [
-      "70% QC time reduction",
+      "**70%** QC time reduction",
       "Reduced publishing delays",
-      "85% compliance accuracy",
+      "**85%** compliance accuracy",
     ],
     tech: ["Postgres", "MongoDB", "Gemini 2.0 Flash", "Veo 2.0", "Compute Engines"],
   },
@@ -293,10 +293,10 @@ export const caseStudies: Record<string, CaseStudy> = {
       "GDPR / CCPA compliant by design",
     ],
     impact: [
-      "5 ad platforms activated via a single unified interface",
-      "10M+ records processed",
+      "**5 ad platforms** activated via a single unified interface",
+      "**10M+** records processed",
       "Zero PII leakage",
-      "50+ data partners supported",
+      "**50+** data partners supported",
     ],
     tech: ["Snowflake", "Python", "React", "FastAPI", "PostgreSQL", "AWS"],
   },
@@ -318,8 +318,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Multi-gateway mandate (auto-renewal) tracking across 5 payment providers",
     ],
     impact: [
-      "620K+ subscribers trackable in a single dashboard",
-      "78.3% Day-1 paid-user retention visibility",
+      "**620K+** subscribers trackable in a single dashboard",
+      "**78.3%** Day-1 paid-user retention visibility",
       "Full revenue-health visibility: new, renewed, churned, and at-risk subscribers",
       "Faster detection of failed renewals across payment gateways",
       "Content-performance and audience-stickiness insights",
@@ -341,7 +341,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     serviceSlugs: ["software-engineering", "ai-automation", "data-analytics"],
     client: "A health system running a hospital-at-home program across Saudi Arabia",
     overview:
-      "A clinical operations platform for delivering acute-level hospital care inside patients' homes — safely, compliantly, and at scale. It governs the full episode from referral, admission, or transfer through eligibility review, in-home assessment, active remote care, and discharge, with every decision documented in one system of record and built for the Saudi (MOH / CBAHI) regulatory environment.",
+      "A clinical operations platform for delivering acute-level hospital care inside patients' homes — safely, compliantly, and at scale. It governs the full episode from referral, admission, or transfer through eligibility review, in-home assessment, active remote care, and discharge, with every decision documented in **one system of record** and built for the Saudi (MOH / CBAHI) regulatory environment.",
     problem: [
       "Clinically stable patients occupy inpatient beds with no governed way to move them home — constraining capacity and delaying higher-acuity admissions.",
       "Home-care coordination runs on phone calls and informal handoffs — no single source of truth, and decisions go undocumented.",

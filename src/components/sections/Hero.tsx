@@ -6,6 +6,7 @@ import Container from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import SectionParticles from "@/components/sections/SectionParticles";
 import BulletMark from "@/components/ui/BulletMark";
+import { renderBold } from "@/components/ui/Bold";
 import { site } from "@/content/site";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -46,7 +47,7 @@ export default function Hero() {
             {...rise(0.12)}
             className="mt-6 max-w-xl text-lead text-muted"
           >
-            {site.description}
+            {renderBold(site.description)}
           </motion.p>
 
           <motion.div {...rise(0.18)} className="mt-9 flex flex-wrap items-center gap-3">

@@ -9,7 +9,7 @@ export const services: Service[] = [
     overview: [
       "Analytics and AI are only as good as the data beneath them.",
       "Most teams lose weeks to brittle exports, metrics that disagree, and pipelines no one trusts — and every new dashboard inherits the mess.",
-      "We build the ingestion, modeling, and governance layer that makes everything downstream faster to build and safe to trust.",
+      "We build the ingestion, modeling, and governance layer that makes everything downstream **faster to build and safe to trust**.",
     ],
     deliver: [
       {
@@ -38,7 +38,7 @@ export const services: Service[] = [
       },
     ],
     howWeWork:
-      "Governance-first. Security, lineage, quality, and access control go in from day one — and we meet your stack where it is instead of forcing a rebuild.",
+      "**Governance-first.** Security, lineage, quality, and access control go in from day one — and we meet your stack where it is instead of forcing a rebuild.",
     approach: [
       { title: "Discover & map", desc: "We inventory every source, owner, and definition — and agree what each metric actually means — before writing a line of pipeline." },
       { title: "Model for use", desc: "We design the warehouse or lakehouse around the questions you'll actually ask, not the shape of the source systems." },
@@ -90,7 +90,7 @@ export const services: Service[] = [
     overview: [
       "Everyone claims to be data-driven — yet the meeting still opens with an argument about whose number is right.",
       "Reports go stale on export, dashboards multiply faster than anyone can trust them, and the questions that matter sit in a queue.",
-      "We build the governed metric model, dashboards, and real-time intelligence that give every team one agreed picture — and the confidence to act on it now.",
+      "We build the governed metric model, dashboards, and real-time intelligence that give every team one agreed picture — and **the confidence to act on it now**.",
     ],
     deliver: [
       {
@@ -119,7 +119,7 @@ export const services: Service[] = [
       },
     ],
     howWeWork:
-      "We work backward from the decision — model the metric once, then design the view around the person who acts on it.",
+      "We work backward from the decision — model the metric once, then design the view around **the person who acts on it**.",
     approach: [
       { title: "Start from the decision", desc: "We define the calls each team needs to make, then work backward to the metrics that inform them." },
       { title: "Model the metric", desc: "One governed, version-controlled definition per metric in a semantic layer, so every tool agrees." },
@@ -168,7 +168,7 @@ export const services: Service[] = [
     overview: [
       "Every business becomes a software business — and every system eventually becomes the thing slowing it down.",
       "Roadmaps stall behind fragile code, a risky migration keeps getting postponed, and \"we'll add tests later\" never arrives.",
-      "We take software from architecture to production and keep it healthy — new platforms and legacy modernization alike, without disrupting live operations.",
+      "We take software from architecture to production and keep it healthy — new platforms and legacy modernization alike, **without disrupting live operations**.",
     ],
     deliver: [
       {
@@ -197,7 +197,7 @@ export const services: Service[] = [
       },
     ],
     howWeWork:
-      "We de-risk change. Old and new run in parallel, every release is gated by automated checks, and a complete audit trail means nothing ships unseen.",
+      "We de-risk change. Old and new run in parallel, every release is gated by automated checks, and a complete audit trail means **nothing ships unseen**.",
     approach: [
       { title: "Architect for change", desc: "We design for the next three years — clear boundaries, documented decisions — not just the next sprint." },
       { title: "Run in parallel", desc: "New systems prove themselves alongside the old, so cutover is a switch, not a leap of faith." },
@@ -245,7 +245,7 @@ export const services: Service[] = [
     overview: [
       "Most AI never leaves the demo — impressive in a slide, unpredictable the moment real data hits it.",
       "Pilots stall without guardrails, and no one trusts an output they can't check.",
-      "We design, build, and operate custom AI that automates real workflows — shipped with the monitoring, guardrails, and MLOps it takes to run every day.",
+      "We design, build, and operate custom AI that automates real workflows — shipped with **the monitoring, guardrails, and MLOps** it takes to run every day.",
     ],
     deliver: [
       {
@@ -274,7 +274,7 @@ export const services: Service[] = [
       },
     ],
     howWeWork:
-      "Outcome-first and compliance-ready. We set the acceptance bar, keep humans in the loop where judgment matters, and instrument every model for accuracy, drift, and cost.",
+      "**Outcome-first and compliance-ready.** We set the acceptance bar, keep humans in the loop where judgment matters, and instrument every model for accuracy, drift, and cost.",
     approach: [
       { title: "Anchor to the metric", desc: "We start from the business outcome and the acceptance bar, then choose the simplest model that clears it." },
       { title: "Keep humans in the loop", desc: "Safeguards, approvals, and confidence thresholds wherever judgment matters." },
@@ -327,7 +327,7 @@ export const services: Service[] = [
     overview: [
       "Cloud should be an advantage, not an on-call headache.",
       "Bills creep, environments drift, a \"quick\" migration turns into months, and every incident is a fire drill because nothing is reproducible.",
-      "We design, migrate, and operate infrastructure as code that scales with demand, holds up to audit, and stays quiet.",
+      "We design, migrate, and operate infrastructure as code that scales with demand, **holds up to audit, and stays quiet**.",
     ],
     deliver: [
       {
@@ -356,7 +356,7 @@ export const services: Service[] = [
       },
     ],
     howWeWork:
-      "Infrastructure as code, least-privilege by default, and observability from day one — so scale, cost, and compliance are built in, not bolted on.",
+      "Infrastructure as code, least-privilege by default, and observability from day one — so scale, cost, and compliance **are built in, not bolted on**.",
     approach: [
       { title: "Design as code", desc: "Every environment defined in code — reproducible, reviewable, and easy to roll back." },
       { title: "Secure by default", desc: "Least-privilege, managed secrets, encryption, and policy guardrails from the start." },

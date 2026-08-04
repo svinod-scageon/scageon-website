@@ -7,6 +7,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/motion/Reveal";
 import Chips from "@/components/ui/Chips";
 import BulletMark from "@/components/ui/BulletMark";
+import { renderBold } from "@/components/ui/Bold";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
 import CtaBand from "@/components/sections/CtaBand";
 import { services, getService } from "@/content/services";
@@ -68,7 +69,7 @@ export default async function ServiceDetailPage({
               {service.overview.map((point) => (
                 <li key={point} className="flex items-start gap-3.5">
                   <BulletMark className="text-accent" />
-                  <p className="leading-relaxed text-muted">{point}</p>
+                  <p className="leading-relaxed text-muted">{renderBold(point)}</p>
                 </li>
               ))}
             </ul>
@@ -105,7 +106,7 @@ export default async function ServiceDetailPage({
               How we work
             </h2>
             <p className="mt-3 text-lg leading-relaxed text-muted">
-              {service.howWeWork}
+              {renderBold(service.howWeWork)}
             </p>
           </Reveal>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

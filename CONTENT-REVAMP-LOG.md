@@ -641,6 +641,231 @@ of a teal dot mixed with leftover blue-tinted stops.
 
 ---
 
+## Step 10 — Cursor feedback on custom buttons ✅
+
+A first attempt at "improve the hover on links" over-delivered — it added a sliding underline
+animation to several links. **Reverted in full** on review: the ask was purely functional (show the
+hand cursor so it's obvious something is clickable), not visual. Rebuilt to that narrower spec.
+
+**Root cause:** Tailwind (v3.3+, including this project's v4) does **not** give `<button>` elements
+a hand cursor by default — only native `<a href>` links get that from the browser automatically.
+Every custom `<button>` in the codebase needed it added explicitly.
+
+| Element | File |
+|---|---|
+| "View case study" trigger | `SolutionCard.tsx` |
+| Services / Industries dropdown trigger | `Navbar.tsx` |
+| Explore dropdown trigger | `Navbar.tsx` |
+| Mobile hamburger toggle | `Navbar.tsx` |
+| Contact form "Send message" button | `ContactForm.tsx` |
+
+**Confirmed already correct, untouched:** every `Button` / `ButtonLink` component instance
+(already had `cursor-pointer` built in) and all native `<a>` links (browser default). The
+intentionally-inert items inside the Explore menu and unpublished-industry entries correctly kept
+`cursor: default` — verified via computed style, not just class inspection, so they stayed
+genuinely non-interactive rather than just looking that way.
+
+**Verification:** `tsc` clean, `npm run build` all 19 routes static, and the actual **computed**
+`cursor` value (not just the class name) checked in a real browser for all 5 fixed elements plus
+one inert control — all matched expectation.
+
+---
+
+## Step 11 — Bold emphasis on key phrases (in progress — Home done)
+
+**Goal:** bold the 1–3 words per sentence that actually matter — not full lines — so a reader
+skimming the page catches the important part. Confirmed scope: numbers/proof points plus the core
+claim of each sentence ("Level 2"), applied to body prose and bullets only. Titles, headlines, and
+card titles are excluded — bolding a word inside an already-bold title would be redundant, not
+additive.
+
+### 11.1 Mechanism
+**New file:** `src/components/ui/Bold.tsx`
+
+Content strings mark the phrase inline with `**double asterisks**` (e.g. in `site.ts`,
+`services.ts`); `renderBold()` splits on that pattern and wraps matches in `<strong>` — no new
+content-model changes needed to add more later, just editing text.
+
+Two details that mattered:
+- **Tone-aware color.** `SectionHeading` and `CtaBand` render on dark bands. Bold text there needs
+  `text-white`, not the light-mode `text-text` (dark ink), or it would render invisible against a
+  dark background. `renderBold(text, tone)` takes a `"light" | "dark"` parameter for this.
+- **`site.description` also feeds SEO/OpenGraph meta tags** (`layout.tsx`). Embedding `**markers**`
+  directly would have put literal asterisks into Google search snippets and social share previews.
+  Added `stripBold()` and applied it specifically where that string feeds `<meta>` tags, while the
+  on-page render uses `renderBold()`. Caught before shipping, not after.
+
+### 11.2 Home page — bolded phrases
+**Files:** `src/content/site.ts`, `src/components/sections/Hero.tsx`,
+`src/components/sections/ServicesPreview.tsx`, `src/components/sections/IndustriesPreview.tsx`,
+`src/app/page.tsx`, `src/components/sections/CtaBand.tsx`, `src/components/ui/SectionHeading.tsx`
+
+| Location | Full sentence | Bolded phrase |
+|---|---|---|
+| Hero sub-line (also site meta description) | "...engineered for **regulated, mission-critical environments**." | regulated, mission-critical environments |
+| "What we do" section intro | "...and the software and cloud it all runs on. **Each stands alone, or works as one.**" | Each stands alone, or works as one. |
+| "Where we do it" section intro | "Compliance-critical, real-time, and **unforgiving of downtime**." | unforgiving of downtime |
+| Closing CTA band (dark) | "...We'll show you the **fastest credible path** there." | fastest credible path |
+
+### Verification
+- `npx tsc --noEmit` → clean; `npm run build` → all 19 routes static
+- Rendered page text scanned for literal `**` → **zero** found
+- `<meta name="description">` read directly → confirmed clean, no markers leaked
+- All 4 `<strong>` tags confirmed present with exact expected text
+- Dark CTA band's bold specifically computed to `rgb(255, 255, 255)` (white) — checked because this
+  is exactly the kind of mistake (dark-on-dark) that's easy to make and easy to miss visually
+
+### 11.3 Services — bolded phrases
+**Files:** `src/content/services.ts`, `src/app/services/[slug]/page.tsx`
+
+Two spots per service, same restraint as Home (one bold phrase per passage): the payoff sentence
+in **Overview** (always the 3rd bullet — the "what we do about it" line) and the **How we work**
+lead line.
+
+| Service | Overview bullet | How we work |
+|---|---|---|
+| Data Engineering | **faster to build and safe to trust** | **Governance-first.** |
+| Data Analytics | **the confidence to act on it now** | **the person who acts on it** |
+| Software Engineering | **without disrupting live operations** | **nothing ships unseen** |
+| AI Automation | **the monitoring, guardrails, and MLOps** | **Outcome-first and compliance-ready.** |
+| Cloud | **holds up to audit, and stays quiet** | **are built in, not bolted on** |
+
+`sub` (the short one-liner used on cards) left untouched — same reasoning as card titles, bolding
+inside an already-short blurb would look redundant, not additive. `/services` listing page cards
+render `sub`, so they're unaffected.
+
+### Verification
+- `npx tsc --noEmit` → clean; `npm run build` → all 19 routes static
+- All 5 service detail pages checked individually: zero literal `**` in rendered text, meta
+  description clean on each, and exactly the 2 expected `<strong>` tags present per page
+
+### 11.4 Industries — bolded phrases
+**Files:** `src/content/industries.ts`, `src/app/industries/[slug]/page.tsx`, `src/components/sections/SolutionCard.tsx`
+
+Same treatment as Services, applied to the two prose fields Industries actually has: the payoff
+sentence in **The Landscape** (3rd bullet, all 6 industries) and each solution card's **whatItIs**
+sentence — but only where one earned it, deliberately not forced onto every card.
+
+**Rule applied:** skip `whatItIs` bolding when the sentence doesn't say more than its own card
+title already does. Nurse Roster Planning and Back-Office Control & Audit were skipped for exactly
+this reason — bolding a phrase there would have been decoration, not signal. Result is an
+intentionally uneven count (3 industries got a landscape + 2 solution bolds each, 3 got landscape
+only) rather than a mechanical one-per-field pass.
+
+| Industry | Landscape | Solution(s) bolded |
+|---|---|---|
+| Healthcare | **without trading away safety** | Hospital Command Center: **a single, real-time operational view** · Remote Patient Monitoring: **the full episode from referral and eligibility to remote monitoring and discharge** |
+| Banking & Finance | **zero-downtime migration** | Core Banking Modernization: **no disruption to live banking operations** · Self-Serve Customer Alerts: **without engineering** |
+| Media & Entertainment | **without risking either** | AI Media QC: **timestamp-based reports** · Privacy-Safe Data Collaboration: **secure, privacy-safe, multi-party data sharing** |
+| Retail | **while it still matters** | — (single solution, landscape already carries it) |
+| Automotive | **on demand** | — |
+| OTT / Streaming | **clear revenue and retention intelligence** | — |
+
+`delivers` bullets left untouched, same reasoning as Services' `deliver` list — already short,
+already scannable fragments.
+
+### Verification
+- `npx tsc --noEmit` → clean; `npm run build` → all 19 routes static
+- All 6 industry pages checked individually: zero literal `**`, meta description clean, exact
+  expected `<strong>` text confirmed on each
+- One false alarm caught and disproved during testing: my own check script filtered out any
+  `<strong>` text under 10 characters, which made Automotive's ("on demand", 9 chars) look
+  missing. Re-checked without the filter — it was rendering correctly all along.
+
+### 11.5 Case studies — bolded phrases
+**Files:** `src/content/caseStudies.ts`, `src/components/sections/SolutionCard.tsx`
+
+Case studies are the site's evidence layer, so the rule here is stricter than elsewhere: **bold
+the actual number where one exists; only fall back to a core-claim phrase when it doesn't.** Never
+both on the same case study — a card with a real stat doesn't need a second decorative bold
+competing with it.
+
+**5 case studies with hard numbers** — the stat itself is now bold, not the surrounding words:
+
+| Case study | Bolded |
+|---|---|
+| Hospital Command Center | **20%** staff productivity gain |
+| Core Banking Modernization | **~30–40%** reduced response times · **~25–30%** faster delivery |
+| AI Media Quality Control | **70%** QC time reduction · **85%** compliance accuracy |
+| Privacy-Safe Data Collaboration | **5 ad platforms** · **10M+** records · **50+** data partners |
+| Subscriber & Revenue Intelligence | **620K+** subscribers · **78.3%** Day-1 retention |
+
+**6 case studies without numeric impact** — bolded the core claim in `overview` instead, so every
+case study gets exactly one visual anchor either way:
+
+| Case study | Bolded (in overview) |
+|---|---|
+| Nurse Roster Planning | **a real-time system** |
+| Back-Office Control & Audit | **unifies access, control, and audit** |
+| Self-Serve Customer Alerts | **without engineering** |
+| Real-Time Store Intelligence | **a virtual store-management team** |
+| AI Creative Generation | **at scale** |
+| Hospital-at-Home Platform | **one system of record** |
+
+**Rendering:** `renderBold()` wired into the shared `DetailBlock` component, which renders Problem,
+Solution, Features, *and* Impact from one code path — so it's a single change that reaches every
+Impact list, while transparently no-op'ing on Problem/Solution/Features (no markers were added
+there, and `renderBold` on plain text just returns it unchanged).
+
+### Verification
+- `npx tsc --noEmit` → clean; `npm run build` → all 19 routes static
+- **Every metric individually confirmed byte-identical** after stripping bold markers — this is
+  the same evidence layer from the original content rewrite, so the same rigor applied: no digit,
+  unit, or symbol was altered, only wrapped
+- `git diff --numstat` on `caseStudies.ts` → symmetric `16 changed / 16 changed`, confirming pure
+  1-for-1 line edits with nothing else touched
+- All 11 case studies checked individually via their industry-page deep link (`#cs-<slug>`) — zero
+  literal `**`, correct bold phrase confirmed present on each
+
+**One test-tooling lesson worth recording:** my first pass reused one browser page across all 11
+deep-link checks and got misleading results — Radix's `Accordion.Content` only mounts a case
+study's content while its own card is open, and re-navigating the same page to a new URL hash
+didn't reliably re-trigger the deep-link-open effect for the later case studies in the loop, so it
+kept reporting the first case study's content for several others. Re-ran with a fresh browser
+context per case study and all 11 confirmed correctly. Not a site bug — a flaw in the test script,
+caught before it became a false report.
+
+### 11.6 About — bolded phrases ✅ (Step 11 now complete across all 5 pages)
+**File:** `src/app/about/page.tsx`
+
+| Location | Bolded |
+|---|---|
+| "Who we are" lead paragraph | "...working **across healthcare, banking, and beyond**." |
+| "Who we are" bullet 3 | "Security and compliance are **first-class requirements** here, not an afterthought." |
+
+**Deliberately left untouched, for consistency with every other page:**
+- The three "How we work" value cards (Compliance-first / Production, not demos / De-risked
+  delivery) — same reasoning as `deliver` (Services) and `delivers` (Industries): short
+  title+description cards in a grid, not flowing prose. Confirmed via direct DOM check that the
+  "Compliance-first" card body renders as a plain `<p>`, not bold-wrapped.
+- The hero `sub` line — matches the precedent set on every other page's `PageHero.sub` (Services,
+  Industries, and all 11 detail pages): short one-liner captions under a title don't get the
+  treatment, only the body prose below them does. `PageHero` was never wired to `renderBold` for
+  this reason, and that was a deliberate choice, not an oversight.
+
+No meta-description risk on this page — the lead paragraph and "Who we are" bullets are local
+strings inside the page component, never fed into `metadata.description` (unlike Home's
+`site.description`, which does double duty and required the `stripBold()` fix in Step 11.1).
+
+### Verification
+- `npx tsc --noEmit` → clean; `npm run build` → all 19 routes static
+- Zero literal `**` in rendered text; meta description confirmed clean (not that it was at risk
+  here, but checked anyway for consistency with every other page in this step)
+- Exactly the 2 expected `<strong>` tags present, confirmed by direct query
+- Confirmed via DOM inspection that the value cards were *not* accidentally caught by the change
+
+---
+
+## Step 11 complete — bold emphasis shipped across Home, Services, Industries, Case Studies, About
+
+Total: **32 bolded phrases** across the site (4 Home + 10 Services + 12 Industries + 11 Case
+Studies + 2 About — note some entries carry more than one bold, e.g. Industries' multi-solution
+cards), one shared rendering mechanism (`Bold.tsx`), zero literal markers ever reaching a browser
+or a search snippet, and every number in every case study verified byte-identical to its
+pre-emphasis value.
+
+---
+
 ## Open decisions (carried forward)
 
 | # | Item | Status |

@@ -1,6 +1,7 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
+import { renderBold } from "@/components/ui/Bold";
 
 export default function SectionHeading({
   eyebrow,
@@ -40,7 +41,7 @@ export default function SectionHeading({
             tone === "dark" ? "text-muted-dark" : "text-muted"
           )}
         >
-          {intro}
+          {renderBold(intro, tone)}
         </p>
       )}
     </Reveal>

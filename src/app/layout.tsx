@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import MotionProvider from "@/components/providers/MotionProvider";
 import { site } from "@/content/site";
+import { stripBold } from "@/components/ui/Bold";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,10 +33,10 @@ export const metadata: Metadata = {
     default: `${site.name} — ${site.tagline}`,
     template: `%s — ${site.name}`,
   },
-  description: site.description,
+  description: stripBold(site.description),
   openGraph: {
     title: `${site.name} — ${site.tagline}`,
-    description: site.description,
+    description: stripBold(site.description),
     url: site.url,
     siteName: site.name,
     type: "website",

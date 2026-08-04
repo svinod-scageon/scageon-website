@@ -7,6 +7,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/motion/Reveal";
 import SolutionCard from "@/components/sections/SolutionCard";
 import BulletMark from "@/components/ui/BulletMark";
+import { renderBold } from "@/components/ui/Bold";
 import CtaBand from "@/components/sections/CtaBand";
 import { industries, getIndustry } from "@/content/industries";
 import { getCaseStudy } from "@/content/caseStudies";
@@ -64,7 +65,7 @@ export default async function IndustryDetailPage({
               {ind.landscape.map((point) => (
                 <li key={point} className="flex items-start gap-3.5">
                   <BulletMark className="text-accent" />
-                  <p className="text-lg leading-relaxed text-text">{point}</p>
+                  <p className="text-lg leading-relaxed text-text">{renderBold(point)}</p>
                 </li>
               ))}
             </ul>
