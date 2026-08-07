@@ -27,7 +27,7 @@ const industryBlurbs: Record<string, string> = {
   "ott-streaming": "Subscriber & revenue intelligence",
 };
 
-const menus: { label: string; href: string; items: MenuItem[] }[] = [
+const menus: { label: string; href: string; items?: MenuItem[] }[] = [
   {
     label: "Services",
     href: "/services",
@@ -36,6 +36,13 @@ const menus: { label: string; href: string; items: MenuItem[] }[] = [
       href: `/services/${s.slug}`,
       blurb: serviceBlurbs[s.slug],
     })),
+  },
+  {
+    // No dropdown yet — a single product doesn't need a mega-menu. Renders as
+    // a plain link (see the `!menu.items` branch below) between Services and
+    // Industries. If a second product is added, give this `items` too.
+    label: "Product",
+    href: "/product",
   },
   {
     label: "Industries",
@@ -126,6 +133,23 @@ export default function Navbar() {
         <ul className="hidden items-center justify-center gap-8 md:flex">
           {menus.map((menu) => {
             const active = isActive(menu.href);
+
+            if (!menu.items) {
+              return (
+                <li key={menu.href}>
+                  <Link
+                    href={menu.href}
+                    className={cn(
+                      link,
+                      active ? "text-text after:scale-x-100" : "text-muted hover:text-text"
+                    )}
+                  >
+                    {menu.label}
+                  </Link>
+                </li>
+              );
+            }
+
             return (
               <li key={menu.href} className="group relative">
                 <button
@@ -288,23 +312,25 @@ export default function Navbar() {
                 className="flex items-center justify-between text-base font-medium text-text"
               >
                 {menu.label}
-                <ArrowRight className="h-4 w-4 text-accent-strong" />
+                {menu.items && <ArrowRight className="h-4 w-4 text-accent-strong" />}
               </Link>
-              <div className="mt-2 grid gap-1.5">
-                {menu.items.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className={cn(
-                      "text-sm",
-                      item.muted ? "text-muted/50" : "text-muted"
-                    )}
-                  >
-                    {item.label}
-                    {item.muted && " · soon"}
-                  </Link>
-                ))}
-              </div>
+              {menu.items && (
+                <div className="mt-2 grid gap-1.5">
+                  {menu.items.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className={cn(
+                        "text-sm",
+                        item.muted ? "text-muted/50" : "text-muted"
+                      )}
+                    >
+                      {item.label}
+                      {item.muted && " · soon"}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
           {/* Explore — display-only, same as desktop */}

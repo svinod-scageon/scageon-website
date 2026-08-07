@@ -866,6 +866,99 @@ pre-emphasis value.
 
 ---
 
+## Step 12 — New "Product" page: Local RAG ✅
+
+The first genuinely new page added since the revamp began — not a rewrite of existing content, a
+new content type and route.
+
+### 12.1 Why this needed its own content type
+**New file:** `src/content/types.ts` — added `Product`, reusing `Deliverable`, `Step`, and
+`TechGroup` from `Service` where the shape is identical, since a Product page structurally mirrors
+a Service detail page.
+
+A `Service` models a capability Scageon *delivers to a client*. A product is a thing Scageon *has
+built* with its own identity, architecture, and feature set — forcing it into the Service shape
+would have lost exactly the fields that matter (problem statement, pipeline architecture). Modeled
+as an array (`content/products.ts`) from day one, per instruction that more products are likely —
+adding a second one later is a data entry, not a rebuild.
+
+### 12.2 The positioning problem — worked through before any copy was written
+The source material for this page came from an AI-generated technical audit of the actual
+codebase, not marketing copy. That audit reported real gaps against this site's usual
+"enterprise/compliance-first" vocabulary: no authentication, no encryption at rest, no audit
+logging, no external deployment. Two rounds of back-and-forth settled this:
+
+1. First pass — recommended framing this as engineering-capability proof rather than a sellable
+   product, specifically to avoid implying a compliance posture (HIPAA/SOX-style claims) that
+   isn't real.
+2. The "no encryption / no auth" facts turned out to be tied to code inspection, not to a stale
+   "learning project" label — updating the label doesn't add features that don't exist. This
+   distinction was surfaced explicitly before writing continued.
+3. Final brief resolved it with an explicit claims table — "safe to claim" vs. "do not claim" —
+   confirming the capability-showcase framing and giving exact honest substitutions (e.g.
+   "Built with engineering rigor" instead of "production-grade").
+
+**Result:** every claim on the live page traces to something on the "safe to claim" list. Nothing
+from "do not claim" appears anywhere — no "enterprise-ready," no compliance-standard name, no
+fabricated deployment, no invented latency numbers.
+
+### 12.3 Page structure
+**New file:** `src/app/product/page.tsx` — static route (no dynamic segment; only one product
+exists, so `/product` renders it directly via `getProduct("local-rag")` rather than building
+listing+detail routing ahead of need).
+
+| Section | Pattern reused from |
+|---|---|
+| Hero | `PageHero` — same as every other page, no inline CTA buttons (consistent with Service/Industry detail pages, which keep the single CTA in the closing band, not duplicated in the hero) |
+| The Problem (3 bullets) | Small mono eyebrow heading, same as Industry's "The Landscape" |
+| What It Is (3 bullets) | Big Newsreader `h2`, same as Service's "Overview" — this is also where the real privacy facts live, stated as architecture, not compliance certification |
+| How It Works (4 steps) | Service's "Approach" step-card pattern |
+| Key Capabilities (6 cards) | Service's "Deliver" card pattern |
+| Tech Stack (6 groups) | Service's `techGroups` pattern, identical rendering |
+| Where It Fits | Cross-links to Healthcare + Banking & Finance, same mechanism as "Industries we apply this in" |
+| CTA (dark band) | `CtaBand`, custom copy — "Get in touch," not "Request a demo" (no demo flow exists) |
+
+**Deliberately dropped from the template used on every other page type:** no "Proof" section (no
+real deployment exists — not fabricated, simply absent) and no "Security & Compliance" section
+(would force either a false certification claim or an awkward gap-list; the true architecture is
+stated with confidence inside "What It Is" instead).
+
+**No screenshots.** The brief that supplied this content assumed screenshots would be needed —
+but the entire rest of this site has never used photography anywhere, running instead on
+typography, the aperture bullet mark, and ambient particle fields. Screenshots would have been the
+one thing that broke the site's visual language, not completed it. Built entirely in the existing
+ambient/typographic style instead.
+
+### 12.4 Nav placement
+**File:** `src/components/layout/Navbar.tsx`
+
+Added between Services and Industries (confirmed placement: flagship offering gets equal billing
+right after the consulting menu, without displacing the existing Services-first narrative).
+
+Technical note: `Product` has no dropdown (a single item doesn't need a mega-menu), while
+Services/Industries do. Rather than duplicating the fairly large dropdown JSX block to special-case
+one plain link, the `menus` array's `items` field was made optional and both the desktop and
+mobile render loops branch on `menu.items ? <dropdown> : <plain link>`. This means a future second
+product could either stay as a plain link or gain a real dropdown by just adding `items` to its
+entry — no structural rework needed either way.
+
+### Verification
+- `npx tsc --noEmit` → clean; `npm run build` → **all 20 routes** prerendered static (up from 19)
+- Nav order confirmed via direct DOM query: Services → **Product** → Industries → Explore → About
+- Zero literal `**` in rendered text; meta description clean; exactly the 2 expected `<strong>`
+  tags present (the two facts explicitly marked as "safe to claim")
+- Cross-links to Healthcare and Banking & Finance confirmed correct
+- Zero console/page errors
+- One false alarm during testing, now a familiar pattern on this site: a `:has-text()` substring
+  match in one debug script briefly suggested the Product nav link pointed to the wrong page;
+  re-checked with an exact-text query against the real DOM and the link was correct all along —
+  same category of test-script imprecision hit several times earlier in this project, not a site
+  bug. Full-page screenshot also showed an apparently-empty CTA band; a natural-scroll screenshot
+  confirmed it renders correctly — the same Reveal-animation-timing artifact documented earlier in
+  this log, not a new issue.
+
+---
+
 ## Open decisions (carried forward)
 
 | # | Item | Status |
