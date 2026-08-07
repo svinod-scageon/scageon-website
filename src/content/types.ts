@@ -59,3 +59,23 @@ export type Service = {
   industrySlugs: string[];
   published: boolean;
 };
+
+/**
+ * A thing Scageon has built and could add to over time (v1: Local RAG only).
+ * Distinct from Service (a capability delivered to clients) — a Product has
+ * its own identity, architecture, and feature set.
+ */
+export type Product = {
+  slug: string;
+  name: string;
+  eyebrow: string;
+  headline: string;
+  sub: string;
+  problem: string[]; // scannable bullets — why this exists
+  whatItIs: string[]; // scannable bullets — what it does
+  howItWorks: Step[]; // the pipeline, step by step
+  features: Deliverable[]; // capability → benefit
+  techGroups: TechGroup[];
+  relatedIndustries: string[];
+  published: boolean;
+};
