@@ -73,7 +73,7 @@ export default async function IndustryDetailPage({
         </Container>
       </section>
 
-      {/* What we do — solution cards with expandable case studies */}
+      {/* What we do — solution cards linking to case studies */}
       <section className="bg-bg">
         <Container className="py-16 sm:py-20">
           <Reveal>
@@ -117,7 +117,7 @@ export default async function IndustryDetailPage({
               {ind.outcomes.map((o, i) => (
                 <Reveal key={o.text} delay={(i % 2) * 0.05} as="li">
                   <Link
-                    href={o.caseStudySlug ? `#cs-${o.caseStudySlug}` : "#"}
+                    href={o.caseStudySlug ? `/case-studies/${o.caseStudySlug}` : "#"}
                     className="group flex items-center justify-between gap-3 rounded-2xl border border-border bg-bg px-5 py-4 transition-colors hover:border-accent/50"
                   >
                     <span className="flex items-center gap-3 text-text">

@@ -182,7 +182,7 @@ export default async function ServiceDetailPage({
               {cases.map((cs, i) => (
                 <Reveal key={cs!.slug} delay={i * 0.05}>
                   <Link
-                    href={`/industries/${cs!.industrySlug}#cs-${cs!.slug}`}
+                    href={`/case-studies/${cs!.slug}`}
                     className="group block h-full"
                   >
                     <SpotlightCard
