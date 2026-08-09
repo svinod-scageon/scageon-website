@@ -166,13 +166,13 @@ export default async function ServiceDetailPage({
         </Container>
       </section>
 
-      {/* Proof */}
+      {/* Results */}
       {cases.length > 0 && (
         <section className="bg-bg">
           <Container className="py-16 sm:py-20">
             <Reveal>
               <h2 className="font-[family-name:var(--font-newsreader)] text-2xl font-semibold text-text">
-                Proof
+                Results
               </h2>
               <p className="mt-3 text-muted">
                 Case studies powered by {service.name}.

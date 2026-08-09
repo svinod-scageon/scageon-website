@@ -1,7 +1,7 @@
 import type { Industry } from "./types";
 
 /**
- * All six industries are published. Adding another = append its object;
+ * All five industries are published. Adding another = append its object;
  * the overview grid and detail page render automatically.
  */
 export const industries: Industry[] = [

@@ -89,7 +89,7 @@ export default function Footer() {
 
         <div className="mt-14 border-t border-border pt-6 text-xs text-muted">
           <p>
-            © {new Date().getFullYear()} {site.legalName}
+            © {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>
         </div>
       </Container>
