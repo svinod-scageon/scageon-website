@@ -301,38 +301,6 @@ export const caseStudies: Record<string, CaseStudy> = {
     tech: ["Snowflake", "Python", "React", "FastAPI", "PostgreSQL", "AWS"],
   },
 
-  "subscriber-revenue-intelligence": {
-    slug: "subscriber-revenue-intelligence",
-    title: "Subscriber & Revenue Intelligence",
-    tagline: "One source of truth for subscribers.",
-    industrySlug: "ott-streaming",
-    serviceSlugs: ["data-analytics"],
-    client: "A regional OTT streaming platform",
-    overview:
-      "An end-to-end analytics pipeline and multi-dashboard reporting system — unifying fragmented subscription, payment, and viewing data into a single source of truth.",
-    solution: [
-      "Automated pipeline syncing user & subscription records from MongoDB into BigQuery",
-      "Verified identity bridge linking anonymous app events to known paid subscribers",
-      "5-bucket dashboard: Revenue, Mandates, Engagement, Stickiness, Frequency",
-      "Reliable active-subscriber tracking across conflicting legacy signals",
-      "Multi-gateway mandate (auto-renewal) tracking across 5 payment providers",
-    ],
-    impact: [
-      "**620K+** subscribers trackable in a single dashboard",
-      "**78.3%** Day-1 paid-user retention visibility",
-      "Full revenue-health visibility: new, renewed, churned, and at-risk subscribers",
-      "Faster detection of failed renewals across payment gateways",
-      "Content-performance and audience-stickiness insights",
-    ],
-    tech: [
-      "MongoDB Atlas",
-      "AWS Lambda (Python)",
-      "Google BigQuery",
-      "Firebase Analytics",
-      "Google Looker Studio",
-    ],
-  },
-
   "hospital-at-home": {
     slug: "hospital-at-home",
     title: "Hospital-at-Home Platform",

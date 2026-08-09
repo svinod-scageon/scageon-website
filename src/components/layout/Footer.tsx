@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
       <Container className="py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div className="grid gap-12 md:grid-cols-4">
           <div>
             <Image
               src="/logo.png"

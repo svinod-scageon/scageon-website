@@ -244,41 +244,6 @@ export const industries: Industry[] = [
     relatedServices: ["ai-automation", "data-analytics", "software-engineering"],
     published: true,
   },
-
-  {
-    slug: "ott-streaming",
-    name: "OTT / Streaming",
-    eyebrow: "OTT / Streaming",
-    headline: "One source of truth for every subscriber.",
-    sub: "Subscription, payment, and viewing data unified into clear revenue and retention intelligence.",
-    landscape: [
-      "Streaming lives and dies by subscribers.",
-      "Yet subscription, payment, and viewing data sit fragmented across systems.",
-      "We unify them into a single source of truth — turning scattered events into **clear revenue and retention intelligence**.",
-    ],
-    solutions: [
-      {
-        title: "Subscriber & Revenue Intelligence",
-        tagline: "One source of truth for subscribers.",
-        whatItIs:
-          "An end-to-end analytics pipeline and multi-dashboard reporting system unifying fragmented subscription, payment, and viewing data.",
-        delivers: [
-          "Automated MongoDB → BigQuery pipeline",
-          "Verified identity bridge from anonymous events to paid subscribers",
-          "Five-bucket dashboard: revenue, mandates, engagement, stickiness, frequency",
-        ],
-        caseStudySlug: "subscriber-revenue-intelligence",
-      },
-    ],
-    outcomes: [
-      { text: "One dashboard for all subscribers", caseStudySlug: "subscriber-revenue-intelligence" },
-      { text: "Early churn-risk visibility", caseStudySlug: "subscriber-revenue-intelligence" },
-      { text: "Faster failed-renewal recovery", caseStudySlug: "subscriber-revenue-intelligence" },
-      { text: "Content & stickiness insight", caseStudySlug: "subscriber-revenue-intelligence" },
-    ],
-    relatedServices: ["data-analytics", "ai-automation", "software-engineering"],
-    published: true,
-  },
 ];
 
 export const getIndustry = (slug: string) =>

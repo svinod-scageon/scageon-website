@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "How Scageon builds AI and data platforms for compliance-critical industries — Healthcare, Banking & Finance, Retail, Automotive, Media & Entertainment, and OTT.",
+    "How Scageon builds AI and data platforms for compliance-critical industries — Healthcare, Banking & Finance, Retail, Automotive, and Media & Entertainment.",
 };
 
 export default function IndustriesPage() {
@@ -20,7 +20,7 @@ export default function IndustriesPage() {
     <>
       <PageHero
         eyebrow="Industries"
-        title="Six industries. Production systems in each."
+        title="Five industries. Production systems in each."
         sub="From hospital command centers to core banking migrations — the work, the outcomes, and the case studies behind each."
         crumbs={[{ label: "Home", href: "/" }, { label: "Industries" }]}
       />

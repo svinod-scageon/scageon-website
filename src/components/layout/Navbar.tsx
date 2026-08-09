@@ -24,7 +24,6 @@ const industryBlurbs: Record<string, string> = {
   retail: "Real-time store intelligence",
   automotive: "AI creative at scale",
   "media-entertainment": "Media QC & data collaboration",
-  "ott-streaming": "Subscriber & revenue intelligence",
 };
 
 const menus: { label: string; href: string; items?: MenuItem[] }[] = [

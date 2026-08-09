@@ -12,7 +12,7 @@ import { getIndustry } from "@/content/industries";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Production systems Scageon has built across healthcare, banking & finance, retail, automotive, media & entertainment, and OTT — the problem, the build, and the measured impact.",
+    "Production systems Scageon has built across healthcare, banking & finance, retail, automotive, and media & entertainment — the problem, the build, and the measured impact.",
 };
 
 export default function CaseStudiesPage() {
