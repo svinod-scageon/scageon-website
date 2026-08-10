@@ -74,7 +74,7 @@ export const products: Product[] = [
       { group: "Application", items: ["FastAPI", "React", "Vite"] },
     ],
     relatedIndustries: ["healthcare", "banking-finance"],
-    published: true,
+    published: false, // On hold pending internal approval — flip to `true` to bring it back.
   },
 ];
 

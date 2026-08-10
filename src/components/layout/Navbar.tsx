@@ -8,6 +8,7 @@ import { ChevronDown, Menu, X, ArrowUpRight, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { services } from "@/content/services";
 import { industries } from "@/content/industries";
+import { publishedProducts } from "@/content/products";
 
 type MenuItem = { label: string; href: string; blurb?: string; muted?: boolean };
 
@@ -36,13 +37,12 @@ const menus: { label: string; href: string; items?: MenuItem[] }[] = [
       blurb: serviceBlurbs[s.slug],
     })),
   },
-  {
-    // No dropdown yet — a single product doesn't need a mega-menu. Renders as
-    // a plain link (see the `!menu.items` branch below) between Services and
-    // Industries. If a second product is added, give this `items` too.
-    label: "Product",
-    href: "/product",
-  },
+  // Product is on hold pending internal approval — hidden from nav while
+  // unpublished, but the entry (and the /product route) stay in the code so
+  // it's a one-line flip in content/products.ts to bring back.
+  ...(publishedProducts().length > 0
+    ? [{ label: "Product", href: "/product" }]
+    : []),
   {
     label: "Industries",
     href: "/industries",
