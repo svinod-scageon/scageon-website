@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Inter_Tight, Newsreader } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -50,6 +51,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${interTight.variable} ${newsreader.variable} antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <noscript>
@@ -57,12 +59,14 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="flex min-h-dvh flex-col">
-        <SmoothScroll />
-        <MotionProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </MotionProvider>
+        <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <SmoothScroll />
+          <MotionProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </MotionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 const Particles = dynamic(() => import("@/components/reactbits/Particles"), {
   ssr: false,
@@ -17,13 +18,18 @@ export default function SectionParticles({
   speed = 0.06,
   // default tuned for DARK sections; pass darker colors for light sections
   colors = ["#0B6E76", "#5fa3a8", "#cfe6e8"],
+  // used instead of `colors` when the site itself is in dark mode, so dots
+  // tuned to read on a white card don't go muddy against a near-black one
+  darkColors = ["#2FD1BE", "#5fd9c9", "#9aa3af"],
 }: {
   count?: number;
   opacity?: number;
   speed?: number;
   colors?: string[];
+  darkColors?: string[];
 }) {
   const [alive, setAlive] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -39,7 +45,7 @@ export default function SectionParticles({
       aria-hidden
     >
       <Particles
-        particleColors={colors}
+        particleColors={resolvedTheme === "dark" ? darkColors : colors}
         particleCount={count}
         particleSpread={14}
         speed={speed}

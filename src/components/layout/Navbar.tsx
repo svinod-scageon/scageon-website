@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { services } from "@/content/services";
 import { industries } from "@/content/industries";
 import { publishedProducts } from "@/content/products";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 type MenuItem = { label: string; href: string; blurb?: string; muted?: boolean };
 
@@ -280,25 +281,29 @@ export default function Navbar() {
         </ul>
 
         {/* CTA */}
-        <div className="hidden justify-end md:flex">
+        <div className="hidden items-center justify-end gap-3 md:flex">
+          <ThemeToggle />
           <Link
             href="/contact"
-            className="group/cta inline-flex items-center gap-1.5 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
+            className="group/cta inline-flex items-center gap-1.5 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
           >
             Contact
             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="col-start-3 inline-flex cursor-pointer items-center justify-center justify-self-end rounded-md p-2 text-text md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        {/* Mobile controls */}
+        <div className="col-start-3 flex items-center justify-self-end gap-1.5 md:hidden">
+          <ThemeToggle />
+          <button
+            className="inline-flex cursor-pointer items-center justify-center rounded-md p-2 text-text"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile panel */}
