@@ -4,10 +4,10 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/motion/Reveal";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
-import { publishedServices } from "@/content/services";
+import { getPublishedServices } from "@/sanity/queries/services";
 
-export default function ServicesPreview() {
-  const services = publishedServices();
+export default async function ServicesPreview() {
+  const services = await getPublishedServices();
 
   return (
     <section className="bg-surface" id="services">

@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X, ArrowUpRight, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { services } from "@/content/services";
-import { industries } from "@/content/industries";
-import { publishedProducts } from "@/content/products";
+import type { Service, Industry } from "@/content/types";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 
 type MenuItem = { label: string; href: string; blurb?: string; muted?: boolean };
@@ -27,34 +25,6 @@ const industryBlurbs: Record<string, string> = {
   automotive: "AI creative at scale",
   "media-entertainment": "Media QC & data collaboration",
 };
-
-const menus: { label: string; href: string; items?: MenuItem[] }[] = [
-  {
-    label: "Services",
-    href: "/services",
-    items: services.map((s) => ({
-      label: s.name,
-      href: `/services/${s.slug}`,
-      blurb: serviceBlurbs[s.slug],
-    })),
-  },
-  // Product is on hold pending internal approval — hidden from nav while
-  // unpublished, but the entry (and the /product route) stay in the code so
-  // it's a one-line flip in content/products.ts to bring back.
-  ...(publishedProducts().length > 0
-    ? [{ label: "Product", href: "/product" }]
-    : []),
-  {
-    label: "Industries",
-    href: "/industries",
-    items: industries.map((i) => ({
-      label: i.name,
-      href: i.published ? `/industries/${i.slug}` : "/industries",
-      blurb: i.published ? industryBlurbs[i.slug] : "Coming soon",
-      muted: !i.published,
-    })),
-  },
-];
 
 const flatLinks = [{ label: "About", href: "/about" }];
 
@@ -86,10 +56,47 @@ const exploreGroups: { group: string; items: { label: string; blurb: string }[] 
 const link =
   "relative py-2 text-sm transition-colors after:absolute after:-bottom-px after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 hover:after:scale-x-100";
 
-export default function Navbar() {
+export default function Navbar({
+  services,
+  industries,
+  showProductLink,
+}: {
+  services: Service[];
+  industries: Industry[];
+  showProductLink: boolean;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+
+  // Built from props (fetched once, in the root layout — a Server
+  // Component) rather than imported directly, since this component itself
+  // is client-side and can't await a Sanity fetch on its own.
+  const menus: { label: string; href: string; items?: MenuItem[] }[] = [
+    {
+      label: "Services",
+      href: "/services",
+      items: services.map((s) => ({
+        label: s.name,
+        href: `/services/${s.slug}`,
+        blurb: serviceBlurbs[s.slug],
+      })),
+    },
+    // Product is on hold pending internal approval — hidden from nav while
+    // unpublished, but the entry (and the /product route) stay in the code
+    // so it's a one-line flip in Sanity to bring back.
+    ...(showProductLink ? [{ label: "Product", href: "/product" }] : []),
+    {
+      label: "Industries",
+      href: "/industries",
+      items: industries.map((i) => ({
+        label: i.name,
+        href: i.published ? `/industries/${i.slug}` : "/industries",
+        blurb: i.published ? industryBlurbs[i.slug] : "Coming soon",
+        muted: !i.published,
+      })),
+    },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);

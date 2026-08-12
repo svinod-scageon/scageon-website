@@ -2,11 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/ui/Container";
-import { site } from "@/content/site";
-import { publishedServices } from "@/content/services";
-import { publishedIndustries } from "@/content/industries";
+import { getSiteSettings } from "@/sanity/queries/site";
+import { getPublishedServices } from "@/sanity/queries/services";
+import { getPublishedIndustries } from "@/sanity/queries/industries";
 
-export default function Footer() {
+export default async function Footer() {
+  const [site, services, industries] = await Promise.all([
+    getSiteSettings(),
+    getPublishedServices(),
+    getPublishedIndustries(),
+  ]);
+
   return (
     <footer className="border-t border-border bg-surface">
       <Container className="py-16">
@@ -30,7 +36,7 @@ export default function Footer() {
               Services
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {publishedServices().map((s) => (
+              {services.map((s) => (
                 <li key={s.slug}>
                   <Link
                     href={`/services/${s.slug}`}
@@ -48,7 +54,7 @@ export default function Footer() {
               Industries
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {publishedIndustries().map((i) => (
+              {industries.map((i) => (
                 <li key={i.slug}>
                   <Link
                     href={`/industries/${i.slug}`}

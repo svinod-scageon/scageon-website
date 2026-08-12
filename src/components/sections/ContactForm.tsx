@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { Check, Loader2 } from "lucide-react";
-import { site } from "@/content/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
 
-export default function ContactForm() {
+export default function ContactForm({ email }: { email: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
 
@@ -47,7 +46,7 @@ export default function ContactForm() {
           data.get("company") || "—"
         }\n\n${data.get("message")}`
       );
-      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
       setStatus("success");
       form.reset();
     } catch {
@@ -66,8 +65,8 @@ export default function ContactForm() {
         </h3>
         <p className="mt-2 text-sm text-muted">
           Your email client should have opened. If not, reach us directly at{" "}
-          <a href={`mailto:${site.email}`} className="text-accent-strong underline">
-            {site.email}
+          <a href={`mailto:${email}`} className="text-accent-strong underline">
+            {email}
           </a>
           .
         </p>
@@ -115,7 +114,7 @@ export default function ContactForm() {
       </button>
       {status === "error" && (
         <p role="alert" className="text-sm text-red-600">
-          Something went wrong. Please email us at {site.email}.
+          Something went wrong. Please email us at {email}.
         </p>
       )}
     </form>
