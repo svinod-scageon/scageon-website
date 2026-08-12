@@ -8,6 +8,8 @@ import { ChevronDown, Menu, X, ArrowUpRight, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { services } from "@/content/services";
 import { industries } from "@/content/industries";
+import { publishedProducts } from "@/content/products";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 type MenuItem = { label: string; href: string; blurb?: string; muted?: boolean };
 
@@ -24,7 +26,6 @@ const industryBlurbs: Record<string, string> = {
   retail: "Real-time store intelligence",
   automotive: "AI creative at scale",
   "media-entertainment": "Media QC & data collaboration",
-  "ott-streaming": "Subscriber & revenue intelligence",
 };
 
 const menus: { label: string; href: string; items?: MenuItem[] }[] = [
@@ -37,13 +38,12 @@ const menus: { label: string; href: string; items?: MenuItem[] }[] = [
       blurb: serviceBlurbs[s.slug],
     })),
   },
-  {
-    // No dropdown yet — a single product doesn't need a mega-menu. Renders as
-    // a plain link (see the `!menu.items` branch below) between Services and
-    // Industries. If a second product is added, give this `items` too.
-    label: "Product",
-    href: "/product",
-  },
+  // Product is on hold pending internal approval — hidden from nav while
+  // unpublished, but the entry (and the /product route) stay in the code so
+  // it's a one-line flip in content/products.ts to bring back.
+  ...(publishedProducts().length > 0
+    ? [{ label: "Product", href: "/product" }]
+    : []),
   {
     label: "Industries",
     href: "/industries",
@@ -281,25 +281,29 @@ export default function Navbar() {
         </ul>
 
         {/* CTA */}
-        <div className="hidden justify-end md:flex">
+        <div className="hidden items-center justify-end gap-3 md:flex">
+          <ThemeToggle />
           <Link
             href="/contact"
-            className="group/cta inline-flex items-center gap-1.5 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
+            className="group/cta inline-flex items-center gap-1.5 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
           >
             Contact
             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="col-start-3 inline-flex cursor-pointer items-center justify-center justify-self-end rounded-md p-2 text-text md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        {/* Mobile controls */}
+        <div className="col-start-3 flex items-center justify-self-end gap-1.5 md:hidden">
+          <ThemeToggle />
+          <button
+            className="inline-flex cursor-pointer items-center justify-center rounded-md p-2 text-text"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile panel */}

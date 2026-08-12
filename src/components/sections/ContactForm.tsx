@@ -108,7 +108,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-medium text-white transition-all hover:-translate-y-px hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-medium text-white transition-all hover:-translate-y-px hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "submitting" && <Loader2 className="h-4 w-4 animate-spin" />}
         Send message

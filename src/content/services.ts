@@ -69,13 +69,11 @@ export const services: Service[] = [
       { group: "Cloud & Infra", items: ["AWS", "Azure", "GCP", "Docker", "Kubernetes", "Terraform"] },
     ],
     caseStudySlugs: [
-      "subscriber-revenue-intelligence",
       "privacy-safe-data-collaboration",
       "retail-store-intelligence",
     ],
     industrySlugs: [
       "media-entertainment",
-      "ott-streaming",
       "retail",
       "healthcare",
       "banking-finance",
@@ -148,12 +146,10 @@ export const services: Service[] = [
       { group: "Governance & Quality", items: ["dbt tests", "Great Expectations", "Data contracts", "Row / column access"] },
     ],
     caseStudySlugs: [
-      "subscriber-revenue-intelligence",
       "hospital-command-center",
       "privacy-safe-data-collaboration",
     ],
     industrySlugs: [
-      "ott-streaming",
       "healthcare",
       "media-entertainment",
       "banking-finance",
@@ -388,10 +384,9 @@ export const services: Service[] = [
     ],
     caseStudySlugs: [
       "core-banking-modernization",
-      "subscriber-revenue-intelligence",
       "hospital-command-center",
     ],
-    industrySlugs: ["banking-finance", "healthcare", "ott-streaming"],
+    industrySlugs: ["banking-finance", "healthcare"],
     published: true,
   },
 ];

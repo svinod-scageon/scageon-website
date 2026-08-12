@@ -13,6 +13,7 @@
   --color-muted: #6b7280; /* secondary text */
   --color-accent: #0b6e76; /* the single accent — petrol teal */
   --color-accent-strong: #085a61; /* accent for text/links on white (AA) */
+  --color-accent-hover: #085a61; /* deepen on hover for filled accent buttons (white text stays AA) */
   --color-border: #e5e7eb; /* hairline */
   --color-border-strong: #d1d5db;
 
@@ -48,6 +49,24 @@
   --animate-shimmer: shimmer 1.6s linear infinite;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Dark mode — same tokens, re-pointed. Reuses the "dark statement"
+   family (black / ink-deep / muted-dark / border-dark) already proven
+   on the CTA band, so the whole site now speaks that same language
+   instead of bolting on a separate dark palette.
+   ───────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-bg: #0a0a0a;
+  --color-surface: #141619;
+  --color-text: #f2f3f5;
+  --color-muted: #9aa3af;
+  --color-accent: #0e8f86; /* button fills — brightened just enough to stay saturated on black while keeping white-text contrast */
+  --color-accent-strong: #2fd1be; /* the AA text/link teal on near-black — the inverse job of light mode's darker accent-strong */
+  --color-accent-hover: #0b746c; /* deepen on hover for filled accent buttons — accent-strong is reserved for text here, so hover gets its own darker step */
+  --color-border: #262b33;
+  --color-border-strong: #38414c;
+}
+
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -55,35 +74,6 @@
   100% {
     background-position: 200% 0;
   }
-}
-
-@keyframes accordion-down {
-  from {
-    height: 0;
-    opacity: 0;
-  }
-  to {
-    height: var(--radix-accordion-content-height);
-    opacity: 1;
-  }
-}
-
-@keyframes accordion-up {
-  from {
-    height: var(--radix-accordion-content-height);
-    opacity: 1;
-  }
-  to {
-    height: 0;
-    opacity: 0;
-  }
-}
-
-.accordion-content[data-state="open"] {
-  animation: accordion-down 260ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.accordion-content[data-state="closed"] {
-  animation: accordion-up 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -112,9 +102,13 @@
   }
 }
 
-/* Logo: the white wordmark rendered near-black for light surfaces */
+/* Logo: the white wordmark rendered near-black for light surfaces.
+   On dark surfaces it's already the right color — drop the filter. */
 @utility logo-ink {
   filter: brightness(0) saturate(100%);
+}
+[data-theme="dark"] .logo-ink {
+  filter: none;
 }
 
 /* Skeleton shimmer surface */
@@ -214,5 +208,19 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Theme toggle: radial wipe via the View Transitions API.
+   Kill the browser's default cross-fade so only our clip-path circle
+   (driven from ThemeToggle.tsx) plays. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(root) {
+    animation: none !important;
   }
 }

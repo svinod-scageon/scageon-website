@@ -1,31 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import * as Accordion from "@radix-ui/react-accordion";
-import { Plus } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import type { Solution, CaseStudy } from "@/content/types";
 import { cn } from "@/lib/utils";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
 import { renderBold } from "@/components/ui/Bold";
-
-function DetailBlock({ label, items }: { label: string; items?: string[] }) {
-  if (!items || items.length === 0) return null;
-  return (
-    <div>
-      <h4 className="font-mono text-xs uppercase tracking-[0.16em] text-accent-strong">
-        {label}
-      </h4>
-      <ul className="mt-3 space-y-2">
-        {items.map((it) => (
-          <li key={it} className="flex gap-2.5 text-sm leading-relaxed text-muted">
-            <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-            {renderBold(it)}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 export default function SolutionCard({
   solution,
@@ -36,22 +14,8 @@ export default function SolutionCard({
   caseStudy?: CaseStudy;
   index: number;
 }) {
-  const anchorId = caseStudy ? `cs-${caseStudy.slug}` : undefined;
-  const [value, setValue] = useState<string>("");
-
-  // Deep-link: open + scroll when the URL hash matches this case study.
-  useEffect(() => {
-    if (!anchorId) return;
-    if (window.location.hash === `#${anchorId}`) {
-      setValue("cs");
-      requestAnimationFrame(() =>
-        document.getElementById(anchorId)?.scrollIntoView({ block: "start" })
-      );
-    }
-  }, [anchorId]);
-
   return (
-    <div id={anchorId} className="h-full scroll-mt-24">
+    <div className="h-full">
       <SpotlightCard
         spotlightColor="rgba(11, 110, 118, 0.14)"
         className={cn(
@@ -100,53 +64,15 @@ export default function SolutionCard({
       )}
 
       {caseStudy && (
-        <Accordion.Root
-          type="single"
-          collapsible
-          value={value}
-          onValueChange={setValue}
-          className="mt-6 border-t border-border pt-2"
-        >
-          <Accordion.Item value="cs">
-            <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full cursor-pointer items-center justify-between gap-2 py-2 text-left text-sm font-medium text-accent-strong">
-                View case study
-                <Plus className="h-4 w-4 transition-transform duration-300 group-data-[state=open]:rotate-45" />
-              </Accordion.Trigger>
-            </Accordion.Header>
-            <Accordion.Content className="accordion-content overflow-hidden">
-              <div className="space-y-6 pb-2 pt-4">
-                <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                  {caseStudy.client}
-                </p>
-                {caseStudy.overview && (
-                  <p className="leading-relaxed text-text">{renderBold(caseStudy.overview)}</p>
-                )}
-                <DetailBlock label="Problem" items={caseStudy.problem} />
-                <DetailBlock label="Solution" items={caseStudy.solution} />
-                <DetailBlock label="Features" items={caseStudy.features} />
-                <DetailBlock label="Impact" items={caseStudy.impact} />
-                {caseStudy.tech && (
-                  <div>
-                    <h4 className="font-mono text-xs uppercase tracking-[0.16em] text-accent-strong">
-                      Technology
-                    </h4>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {caseStudy.tech.map((t) => (
-                        <li
-                          key={t}
-                          className="rounded-full border border-border bg-bg px-3 py-1.5 font-mono text-xs text-muted"
-                        >
-                          {t}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </Accordion.Content>
-          </Accordion.Item>
-        </Accordion.Root>
+        <div className="mt-6 border-t border-border pt-4">
+          <Link
+            href={`/case-studies/${caseStudy.slug}`}
+            className="group flex w-full items-center justify-between gap-2 text-left text-sm font-medium text-accent-strong"
+          >
+            View case study
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+        </div>
       )}
       </SpotlightCard>
     </div>
