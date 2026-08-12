@@ -25,7 +25,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "Missing _type" }, { status: 400 });
     }
 
-    revalidateTag(body._type, "max");
+    // { expire: 0 } forces an immediate hard invalidation — the named
+    // presets (e.g. "max") each carry their own "stale" tolerance (up to
+    // 5 minutes for "max"), which is the opposite of what a publish-now
+    // CMS webhook needs.
+    revalidateTag(body._type, { expire: 0 });
 
     return NextResponse.json({ revalidated: true, tag: body._type });
   } catch (err) {
