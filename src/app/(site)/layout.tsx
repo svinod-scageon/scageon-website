@@ -66,6 +66,7 @@ export default async function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${interTight.variable} ${newsreader.variable} antialiased`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>
