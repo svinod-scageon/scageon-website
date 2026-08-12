@@ -7,7 +7,6 @@ import { ButtonLink } from "@/components/ui/Button";
 import SectionParticles from "@/components/sections/SectionParticles";
 import BulletMark from "@/components/ui/BulletMark";
 import { renderBold } from "@/components/ui/Bold";
-import { site } from "@/content/site";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -17,7 +16,13 @@ const rise = (delay: number) => ({
   transition: { duration: 0.5, ease: EASE, delay },
 });
 
-export default function Hero() {
+export default function Hero({
+  tagline,
+  description,
+}: {
+  tagline: string;
+  description: string;
+}) {
   return (
     <section className="relative overflow-hidden border-b border-border bg-surface">
       {/* free-moving particle field — colors tuned to read on white */}
@@ -33,7 +38,7 @@ export default function Hero() {
             className="flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-[0.22em] text-accent-strong"
           >
             <BulletMark className="mt-0 h-[0.85em] w-[0.85em] text-accent" />
-            {site.tagline}
+            {tagline}
           </motion.p>
 
           <motion.h1
@@ -47,7 +52,7 @@ export default function Hero() {
             {...rise(0.12)}
             className="mt-6 max-w-xl text-lead text-muted"
           >
-            {renderBold(site.description)}
+            {renderBold(description)}
           </motion.p>
 
           <motion.div {...rise(0.18)} className="mt-9 flex flex-wrap items-center gap-3">

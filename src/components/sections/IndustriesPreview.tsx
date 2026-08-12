@@ -4,10 +4,12 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/motion/Reveal";
 import SpotlightCard from "@/components/reactbits/SpotlightCard";
-import { industries } from "@/content/industries";
+import { getIndustries } from "@/sanity/queries/industries";
 import { cn } from "@/lib/utils";
 
-export default function IndustriesPreview() {
+export default async function IndustriesPreview() {
+  const industries = await getIndustries();
+
   return (
     <section className="bg-bg" id="industries">
       <Container className="py-20 sm:py-28">
