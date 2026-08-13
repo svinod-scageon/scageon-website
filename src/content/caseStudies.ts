@@ -11,6 +11,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     client: "A leading hospital chain (Middle East)",
     overview:
       "A mission-critical decision-support platform that consolidates hospital-chain operations into a single, real-time view.",
+    problem: [],
     solution: [
       "Unified healthcare data platform across hospital operations",
       "AI-driven self-serve tools for capacity and resource planning",
@@ -21,6 +22,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Improved bed capacity, patient flow, and care quality",
       "Mission-critical, real-time decision support",
     ],
+    features: [],
     tech: ["Python", "React", "FastAPI", "PostgreSQL", "GCP"],
   },
 
@@ -33,6 +35,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     client: "One of Asia's largest private hospital networks",
     overview:
       "An AI-driven workforce-automation platform that digitizes nurse rostering, shift management, and leave workflows across multiple hospitals — replacing manual operations with **a real-time system**.",
+    problem: [],
     solution: [
       "AI engine auto-generates conflict-free, compliance-ready rosters in minutes, not days",
       "Real-time workforce intelligence: staffing gaps, skill shortfalls, and overtime risks surfaced instantly",
@@ -46,6 +49,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Scalable, secure architecture replacing a legacy PowerApps system",
       "New capabilities: push notifications, I.D.E.A.S. module, AI regeneration",
     ],
+    features: [],
     tech: [
       "React 19 + TypeScript + Vite",
       "Databricks Apps + Lakebase (PostgreSQL)",
@@ -65,6 +69,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     client: "A bank modernizing its core systems",
     overview:
       "A legacy-to-modern platform migration — old and new core systems running side by side, with continuous operations throughout the transition and automated security checks before every release.",
+    problem: [],
     solution: [
       "Removed manual tracking of which customers had migrated",
       "Upgraded rigid legacy connections to a faster, more flexible modern format",
@@ -117,6 +122,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Governed modules: multi-bank management, RSA key-version rotation, notification-provider config",
       "End-to-end correlation-ID tracing on every service call",
     ],
+    features: [],
     impact: [
       "Federated SSO with zero disruption during the SSO → Keycloak migration",
       "Full, queryable audit trail for compliance and governance",
@@ -157,6 +163,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Payload-validated live preview — import a real event, validate paths, simulate output before publish",
       "Secure BFF — every change authenticated, service-authorized, traced, and audit-logged",
     ],
+    features: [],
     impact: [
       "Business teams publish alerts with zero engineering involvement",
       "One config serves multi-party events — no duplicated templates",
@@ -194,6 +201,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Multi-agent AI system operating as a virtual store-management team",
       "Live correlation of foot traffic to revenue at the zone level",
     ],
+    features: [],
     impact: [
       "Improved sales",
       "Increased compliance",
@@ -221,6 +229,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     client: "A global automotive company",
     overview:
       "A marketing creative platform — AI product photography and campaign-ready visuals, produced and validated **at scale**.",
+    problem: [],
     solution: [
       "AI-driven product photography",
       "Instant, campaign-ready visuals",
@@ -268,6 +277,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Audio evaluation",
       "Timestamp-based anomaly reports",
     ],
+    features: [],
     impact: [
       "**70%** QC time reduction",
       "Reduced publishing delays",
@@ -285,6 +295,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     client: "One of the world's largest media investment companies",
     overview:
       "A data collaboration platform overcoming native Snowflake limitations — secure, privacy-safe, multi-party data sharing for advertising and media.",
+    problem: [],
     solution: [
       "Secure multi-party data sharing across advertisers, agencies, and data partners",
       "Multi-provider enrichment",
@@ -292,6 +303,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "DSP activation",
       "GDPR / CCPA compliant by design",
     ],
+    features: [],
     impact: [
       "**5 ad platforms** activated via a single unified interface",
       "**10M+** records processed",
@@ -336,7 +348,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Strict per-facility data isolation across a multi-hospital deployment",
       "One governed record for the full episode — no ghost records, and nothing is ever deleted",
     ],
-    // tech intentionally omitted for now (to be added later)
+    tech: [], // intentionally omitted for now (to be added later)
   },
 };
 

@@ -7,10 +7,10 @@ const INDUSTRY_PROJECTION = `{
   eyebrow,
   headline,
   sub,
-  landscape,
-  solutions,
-  outcomes,
-  relatedServices,
+  "landscape": coalesce(landscape, []),
+  "solutions": coalesce(solutions, []),
+  "outcomes": coalesce(outcomes, []),
+  "relatedServices": coalesce(relatedServices, []),
   published
 }`;
 

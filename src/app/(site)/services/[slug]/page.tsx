@@ -148,7 +148,7 @@ export default async function ServiceDetailPage({
             </p>
           </Reveal>
 
-          {service.techGroups ? (
+          {service.techGroups.length > 0 ? (
             <div className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
               {service.techGroups.map((g, i) => (
                 <Reveal key={g.group} delay={(i % 4) * 0.05}>

@@ -10,7 +10,7 @@ export const caseStudy = defineType({
     defineField({
       name: "title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().max(60),
     }),
     defineField({
       name: "slug",
@@ -23,7 +23,7 @@ export const caseStudy = defineType({
           return isUnique || "This slug is already used by another Case Study.";
         }),
     }),
-    defineField({ name: "tagline", type: "string" }),
+    defineField({ name: "tagline", type: "string", validation: (Rule) => Rule.max(160) }),
     defineField({
       name: "industrySlug",
       title: "Industry slug",
@@ -41,19 +41,41 @@ export const caseStudy = defineType({
       title: "Client (anonymized label)",
       type: "string",
       description: 'e.g. "A leading regional bank" — never the real client name.',
+      validation: (Rule) => Rule.max(80),
     }),
-    defineField({ name: "overview", type: "text", rows: 3 }),
-    defineField({ name: "problem", type: "array", of: [{ type: "string" }] }),
-    defineField({ name: "solution", type: "array", of: [{ type: "string" }] }),
-    defineField({ name: "features", type: "array", of: [{ type: "string" }] }),
+    defineField({ name: "overview", type: "text", rows: 3, validation: (Rule) => Rule.max(450) }),
+    defineField({
+      name: "problem",
+      type: "array",
+      of: [{ type: "string", validation: (Rule) => Rule.max(300) }],
+      validation: (Rule) => Rule.max(8),
+    }),
+    defineField({
+      name: "solution",
+      type: "array",
+      of: [{ type: "string", validation: (Rule) => Rule.max(300) }],
+      validation: (Rule) => Rule.max(8),
+    }),
+    defineField({
+      name: "features",
+      type: "array",
+      of: [{ type: "string", validation: (Rule) => Rule.max(300) }],
+      validation: (Rule) => Rule.max(8),
+    }),
     defineField({
       name: "impact",
       title: "Impact",
       type: "array",
-      of: [{ type: "string" }],
+      of: [{ type: "string", validation: (Rule) => Rule.max(300) }],
       description: "All specific numbers/metrics live here, e.g. \"**20%** staff productivity gain\".",
+      validation: (Rule) => Rule.max(8),
     }),
-    defineField({ name: "tech", type: "array", of: [{ type: "string" }] }),
+    defineField({
+      name: "tech",
+      type: "array",
+      of: [{ type: "string", validation: (Rule) => Rule.max(60) }],
+      validation: (Rule) => Rule.max(20),
+    }),
   ],
 
   preview: {

@@ -6,11 +6,11 @@ export type CaseStudy = {
   serviceSlugs: string[];
   client: string; // anonymized label
   overview?: string;
-  problem?: string[];
-  solution?: string[];
-  features?: string[];
-  impact?: string[]; // ← all specific numbers live here
-  tech?: string[];
+  problem: string[];
+  solution: string[];
+  features: string[];
+  impact: string[]; // ← all specific numbers live here
+  tech: string[];
 };
 
 export type Solution = {
@@ -54,7 +54,7 @@ export type Service = {
   howWeWork: string; // lead line for the approach section
   approach: Step[]; // the process, step by step
   tech: string[]; // flat fallback
-  techGroups?: TechGroup[]; // grouped stack (rendered when present)
+  techGroups: TechGroup[]; // grouped stack (rendered when non-empty)
   caseStudySlugs: string[];
   industrySlugs: string[];
   published: boolean;

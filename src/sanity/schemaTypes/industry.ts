@@ -10,7 +10,7 @@ export const industry = defineType({
     defineField({
       name: "name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().max(60),
     }),
     defineField({
       name: "slug",
@@ -23,24 +23,32 @@ export const industry = defineType({
           return isUnique || "This slug is already used by another Industry.";
         }),
     }),
-    defineField({ name: "eyebrow", type: "string" }),
-    defineField({ name: "headline", type: "string" }),
-    defineField({ name: "sub", type: "text", rows: 3 }),
+    defineField({ name: "eyebrow", type: "string", validation: (Rule) => Rule.max(160) }),
+    defineField({
+      name: "headline",
+      type: "string",
+      description: "Shown large at the top of the page — keep it to one short line.",
+      validation: (Rule) => Rule.max(100),
+    }),
+    defineField({ name: "sub", type: "text", rows: 3, validation: (Rule) => Rule.max(160) }),
     defineField({
       name: "landscape",
       title: "Landscape (bullet points)",
       type: "array",
-      of: [{ type: "string" }],
+      of: [{ type: "string", validation: (Rule) => Rule.max(300) }],
+      validation: (Rule) => Rule.max(8),
     }),
     defineField({
       name: "solutions",
       type: "array",
       of: [{ type: "solution" }], // shared object type — schemaTypes/objects/solution.ts
+      validation: (Rule) => Rule.max(6),
     }),
     defineField({
       name: "outcomes",
       type: "array",
       of: [{ type: "outcome" }],
+      validation: (Rule) => Rule.max(8),
     }),
     defineField({
       name: "relatedServices",

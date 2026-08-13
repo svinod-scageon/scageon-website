@@ -6,10 +6,15 @@ export const solution = defineType({
   title: "Solution",
   type: "object",
   fields: [
-    defineField({ name: "title", type: "string" }),
-    defineField({ name: "tagline", type: "string" }),
-    defineField({ name: "whatItIs", type: "text", rows: 3 }),
-    defineField({ name: "delivers", type: "array", of: [{ type: "string" }] }),
+    defineField({ name: "title", type: "string", validation: (Rule) => Rule.max(60) }),
+    defineField({ name: "tagline", type: "string", validation: (Rule) => Rule.max(160) }),
+    defineField({ name: "whatItIs", type: "text", rows: 3, validation: (Rule) => Rule.max(400) }),
+    defineField({
+      name: "delivers",
+      type: "array",
+      of: [{ type: "string", validation: (Rule) => Rule.max(300) }],
+      validation: (Rule) => Rule.max(8),
+    }),
     defineField({
       name: "caseStudySlug",
       title: "Case study slug",
