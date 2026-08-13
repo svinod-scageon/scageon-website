@@ -6,7 +6,7 @@ export const step = defineType({
   title: "Step",
   type: "object",
   fields: [
-    defineField({ name: "title", type: "string" }),
-    defineField({ name: "desc", type: "text", rows: 2 }),
+    defineField({ name: "title", type: "string", validation: (Rule) => Rule.max(60) }),
+    defineField({ name: "desc", type: "text", rows: 2, validation: (Rule) => Rule.max(300) }),
   ],
 });

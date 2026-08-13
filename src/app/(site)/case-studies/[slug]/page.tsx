@@ -132,7 +132,7 @@ export default async function CaseStudyDetailPage({
                 </div>
               )}
 
-              {cs.tech && (
+              {cs.tech.length > 0 && (
                 <div>
                   <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-muted">
                     Technology

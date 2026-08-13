@@ -11,7 +11,7 @@ export const service = defineType({
       name: "name",
       title: "Name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().max(60),
     }),
     defineField({
       name: "slug",
@@ -29,48 +29,57 @@ export const service = defineType({
       name: "headline",
       title: "Headline",
       type: "string",
+      description: "Shown large at the top of the page — keep it to one short line.",
+      validation: (Rule) => Rule.max(100),
     }),
     defineField({
       name: "sub",
       title: "Subheading",
       type: "text", // "text" gives a multi-line textarea in the editor, vs. "string"'s single-line input — better for a sentence or two
       rows: 3,
+      validation: (Rule) => Rule.max(160),
     }),
     defineField({
       name: "overview",
       title: "Overview (bullet points)",
       type: "array",
-      of: [{ type: "string" }], // a simple list of strings — Studio renders add/remove/reorder controls automatically
+      of: [{ type: "string", validation: (Rule) => Rule.max(300) }], // a simple list of strings — Studio renders add/remove/reorder controls automatically
+      validation: (Rule) => Rule.max(8),
     }),
     defineField({
       name: "deliver",
       title: "What you deliver",
       type: "array",
       of: [{ type: "deliverable" }], // reuses the shared object type — see schemaTypes/objects/deliverable.ts
+      validation: (Rule) => Rule.max(8),
     }),
     defineField({
       name: "howWeWork",
       title: "How we work (lead line)",
       type: "text",
       rows: 3,
+      validation: (Rule) => Rule.max(400),
     }),
     defineField({
       name: "approach",
       title: "Approach (steps)",
       type: "array",
       of: [{ type: "step" }],
+      validation: (Rule) => Rule.max(8),
     }),
     defineField({
       name: "tech",
       title: "Tech (flat list)",
       type: "array",
-      of: [{ type: "string" }],
+      of: [{ type: "string", validation: (Rule) => Rule.max(60) }],
+      validation: (Rule) => Rule.max(20),
     }),
     defineField({
       name: "techGroups",
       title: "Tech (grouped)",
       type: "array",
       of: [{ type: "techGroup" }],
+      validation: (Rule) => Rule.max(8),
     }),
     defineField({
       name: "caseStudySlugs",

@@ -6,14 +6,14 @@ const CASE_STUDY_PROJECTION = `{
   title,
   tagline,
   industrySlug,
-  serviceSlugs,
+  "serviceSlugs": coalesce(serviceSlugs, []),
   client,
   overview,
-  problem,
-  solution,
-  features,
-  impact,
-  tech
+  "problem": coalesce(problem, []),
+  "solution": coalesce(solution, []),
+  "features": coalesce(features, []),
+  "impact": coalesce(impact, []),
+  "tech": coalesce(tech, [])
 }`;
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {

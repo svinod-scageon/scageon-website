@@ -6,7 +6,7 @@ export const outcome = defineType({
   title: "Outcome",
   type: "object",
   fields: [
-    defineField({ name: "text", type: "string" }),
+    defineField({ name: "text", type: "string", validation: (Rule) => Rule.max(160) }),
     defineField({ name: "caseStudySlug", title: "Case study slug", type: "string" }),
   ],
 });

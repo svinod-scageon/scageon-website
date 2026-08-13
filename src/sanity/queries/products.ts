@@ -7,12 +7,12 @@ const PRODUCT_PROJECTION = `{
   eyebrow,
   headline,
   sub,
-  problem,
-  whatItIs,
-  howItWorks,
-  features,
-  techGroups,
-  relatedIndustries,
+  "problem": coalesce(problem, []),
+  "whatItIs": coalesce(whatItIs, []),
+  "howItWorks": coalesce(howItWorks, []),
+  "features": coalesce(features, []),
+  "techGroups": coalesce(techGroups, []),
+  "relatedIndustries": coalesce(relatedIndustries, []),
   published
 }`;
 
